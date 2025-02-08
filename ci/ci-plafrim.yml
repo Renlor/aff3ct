@@ -86,7 +86,7 @@ build-linux-gcc:
     matrix:
       - COMPILER: gcc-x64-sse4.2
         CFLAGS_SPE: -m64 -msse4.2
-        JSON: ['ON']
+        JSON: ['OFF']
         AFF3CT_PREC: MULTI
         LFLAGS: -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
   artifacts:
@@ -104,34 +104,22 @@ build-linux-gcc:
     matrix:
       - COMPILER: gcc-nointr
         CFLAGS_SPE: -DMIPP_NO_INTRINSICS
-        JSON: ['ON']
-        AFF3CT_PREC: MULTI
-        LFLAGS: -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
-    
-      - COMPILER: gcc-x64-sse4.2
-        CFLAGS_SPE: -m64 -msse4.2
-        JSON: OFF #['OFF','ON']
+        JSON: ['OFF']
         AFF3CT_PREC: MULTI
         LFLAGS: -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
     
       - COMPILER: gcc-x64-avx2
         CFLAGS_SPE: -m64 -mavx2 -mfma
-        JSON: ['ON']
+        JSON: ['OFF']
         AFF3CT_PREC: MULTI
         LFLAGS: -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
     
       - COMPILER: gcc-8-bit
         CFLAGS_SPE: -march=native
-        JSON: OFF # ['OFF', 'ON']
+        JSON: ['OFF']
         AFF3CT_PREC: '8'
         CMAKE_OPT_SPE: -DAFF3CT_LINK_GSL=ON
         MODULE_SPE: linalg/gsl/2.8
-      
-      - COMPILER: gcc-x64-sse4.2
-        CFLAGS_SPE: -m64 -msse4.2
-        JSON: ['OFF']
-        AFF3CT_PREC: MULTI
-        LFLAGS: -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
 
 
 build-linux-gcc-opt-artifact:
@@ -155,7 +143,7 @@ build-linux-gcc-opt:
   extends: .build-plafrim-gcc
   parallel:
     matrix:
-      - JSON: OFF #['OFF','ON']
+      - JSON: ['OFF']
   variables:
     COMPILER: gcc-mpi
     MODULE_SPE: mpi/openmpi/5.0.1 linalg/gsl/2.8
@@ -224,7 +212,7 @@ build-linux-gcc-coverage:
   extends: .build-plafrim-icpc
   parallel:
     matrix:
-      - JSON: OFF #['OFF','ON']
+      - JSON: ['OFF']
   variables:
     GIT_TAG: v0.0.0
     CFLAGS: -Wall -funroll-loops -march=native -std=c++11

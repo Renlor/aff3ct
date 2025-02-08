@@ -43,12 +43,6 @@ build-linux-gcc:
         AFF3CT_PREC: MULTI
         LFLAGS: -static -static-libgcc -static-libstdc++ -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
     
-      - COMPILER: gcc-x64-sse4.2
-        CFLAGS_SPE: -m64 -msse4.2
-        JSON: ['OFF']
-        AFF3CT_PREC: MULTI
-        LFLAGS: -static -static-libgcc -static-libstdc++ -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
-    
       - COMPILER: gcc-x64-avx2
         CFLAGS_SPE: -m64 -mavx2 -mfma
         JSON: ['OFF']
