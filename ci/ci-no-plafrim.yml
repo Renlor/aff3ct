@@ -33,7 +33,7 @@ build-linux-gcc:
       dotenv: build.env
     name: build-linux-${COMPILER}-json-${JSON}
     paths:
-      - ${BUILD_DIR}
+      - ${NAME}
 
 
 
@@ -187,7 +187,7 @@ check-documentation:
     - linux
     - docker
   script:
-    - ./ci/check-documentation.py --aff3ct "$BUILD_DIR/bin/aff3ct"
+    - ./ci/check-documentation.py --aff3ct "${BUILD_DIR}/bin/aff3ct"
 
     
 ################################# Regression ####################################################################################################################################################################################

@@ -99,7 +99,7 @@ build-linux-gcc:
       dotenv: build.env
     name: build-linux-${COMPILER}-json-${JSON}
     paths:
-      - ${BUILD_DIR}
+      - ${NAME}
       - ${NAME}.out
       - ${NAME}.err
 
