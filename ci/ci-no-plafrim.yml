@@ -187,8 +187,6 @@ check-documentation:
     - linux
     - docker
   script:
-    - echo ${BUILD_DIR}
-    - ls
     - ./ci/check-documentation.py --aff3ct "${BUILD_DIR}/bin/aff3ct"
 
     
