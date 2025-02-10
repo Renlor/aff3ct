@@ -6,7 +6,7 @@
 analysis-git-submodules:
   extends: .tags-linux
   rules:
-    - if: $CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop"
+    - if: $MAIN_BRANCH
       when: always
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
@@ -24,20 +24,15 @@ analysis-git-submodules:
 
 #### Deploy Gitlab.com
 
-.tag-deploy:
+
+.deploy-gitlab-com:
   tags:
     - x86_64
     - linux
     - docker
     - no_proxy
-
-
-
-
-.deploy-gitlab-com:
-  extends: .tag-deploy
   rules:
-    - if: $CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop"
+    - if: $MAIN_BRANCH
       when: always
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
@@ -63,10 +58,6 @@ deploy-sonarqube-linux:
 deploy-builds-linux-windows:
   extends: .deploy-gitlab-com
   image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_git:v2.25.1
-  dependencies:
-    - build-linux-gcc
-    - build-windows-gcc
-    # - build-macos-clang-x64-sse4.2
   artifacts:
      name: builds
      when: always
@@ -90,15 +81,12 @@ deploy-builds-linux-windows:
     - source ./ci/tools/git-author.sh
     - source ./ci/tools/git-version.sh
 
-    - ./ci/deploy/deploy-builds-linux.sh build_linux_gcc_x64_sse4.2_json_ON \
-                                         build_linux_gcc_x64_avx2_json_ON \
-                                         build_windows_gcc_x86_sse4.2_json_ON \
-                                         build_windows_gcc_x64_avx2_json_ON
+    - ./ci/deploy/deploy-builds-linux.sh build_*
 
 deploy-upload-ppa:
-  extends: .tag-deploy
+  extends: .deploy-gitlab-com
   rules:
-  - if: $CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH == "ppa_upload"
+  - if: $MAIN_BRANCH || $CI_COMMIT_BRANCH == "ppa_upload"
     when: always
   - if: $CI_PIPELINE_SOURCE == "schedule"
     when: never

@@ -2,6 +2,7 @@
 variables:
   GIT_SUBMODULE_STRATEGY: none
   DEPLOY: $CI_SERVER_HOST" == "gitlab.com" || $CI_SERVER_HOST == "github.com"
+  MAIN_BRANCH: $CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop"
 
 
 ###### CI environment
@@ -112,7 +113,7 @@ analysis-clang-format:
 analysis-clang:
   extends: .tags-linux
   rules:
-    - if: $CI_SERVER_HOST == "gitlab.com" && ($CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop")
+    - if: $CI_SERVER_HOST == "gitlab.com" && $MAIN_BRANCH
       when: always
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
