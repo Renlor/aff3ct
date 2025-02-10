@@ -1,4 +1,4 @@
-
+#- if : $CI_SERVER_HOST == "gitlab.com" && ($CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH == "ppa_upload")  && $CI_PIPELINE_SOURCE != "schedule"
 
 ################################# Analysis ####################################################################################################################################################################################
 
@@ -6,11 +6,11 @@
 analysis-git-submodules:
   extends: .tags-linux
   rules:
-    - if: $MAIN_BRANCH
-      when: always
+    - if: $CI_COMMIT_BRANCH == "ppa_upload"
+      when: never
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
-    - when: never
+    - when: always
   image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_git:v2.25.1
   stage: analysis
   variables:
@@ -24,24 +24,23 @@ analysis-git-submodules:
 
 #### Deploy Gitlab.com
 
-
 .deploy-gitlab-com:
   tags:
     - x86_64
     - linux
     - docker
     - no_proxy
-  rules:
-    - if: $MAIN_BRANCH
-      when: always
-    - if: $CI_PIPELINE_SOURCE == "schedule"
-      when: never
-    - when: never
   stage: deploy
   allow_failure: true
 
 deploy-sonarqube-linux:
   extends: .deploy-gitlab-com
+  rules:
+    - if: $CI_COMMIT_BRANCH == "ppa_upload"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - when: always
   image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_sonarqube:v3.0.3
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
@@ -86,11 +85,9 @@ deploy-builds-linux-windows:
 deploy-upload-ppa:
   extends: .deploy-gitlab-com
   rules:
-  - if: $MAIN_BRANCH || $CI_COMMIT_BRANCH == "ppa_upload"
-    when: always
   - if: $CI_PIPELINE_SOURCE == "schedule"
     when: never
-  - when: never
+  - when: always
   image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_ppa
   variables:
     GIT_SUBMODULE_STRATEGY: recursive

@@ -1,8 +1,7 @@
 
 variables:
   GIT_SUBMODULE_STRATEGY: none
-  DEPLOY: $CI_SERVER_HOST" == "gitlab.com" || $CI_SERVER_HOST == "github.com"
-  MAIN_BRANCH: $CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop"
+
 
 
 ###### CI environment
@@ -113,7 +112,7 @@ analysis-clang-format:
 analysis-clang:
   extends: .tags-linux
   rules:
-    - if: $CI_SERVER_HOST == "gitlab.com" && $MAIN_BRANCH
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop"
       when: always
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
@@ -196,12 +195,14 @@ build-linux-clang-artifact:
     paths:
       - ${NAME}
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" 
+    - if: '$CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"'
 
 build-linux-clang:
   extends: .build-linux-clang
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_SERVER_HOST != "gitlab.com"
+    - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"
 
 ####################################################### Options ################################################################################################################################################################
 
@@ -209,28 +210,31 @@ include:
   # Tests needing specific Runner
   - local: 'ci/windows/ci-windows.yml'
     rules: 
-      - if : $CI_AFF3CT_RUNNERS_WINDOWS == "ON"
+      - if: $CI_AFF3CT_RUNNERS_WINDOWS == "ON" && $CI_PIPELINE_SOURCE != "schedule"
   - local: 'ci/macos/ci-macos.yml'
     rules: 
-      - if : $CI_AFF3CT_RUNNERS_MACOS == "ON"
+      - if: $CI_AFF3CT_RUNNERS_MACOS == "ON" && $CI_PIPELINE_SOURCE != "schedule"
 
   # Alternative runner for main pipline
   # 1 Plafrim
   # - local: 'ci/ci-plafrim.yml'
   #   rules:
-  #     - if : $CI_AFF3CT_RUNNER_PLAFRIM == "ON"
+  #     - if: $CI_AFF3CT_RUNNER_PLAFRIM == "ON" && $CI_PIPELINE_SOURCE != "schedule"
   # 2 Standard Linux runner
   - local: 'ci/ci-no-plafrim.yml'
-    # rules:
-    #   - if : $CI_AFF3CT_RUNNER_PLAFRIM == "OFF"
+    rules:
+      - if: $CI_PIPELINE_SOURCE != "schedule"
+    #   - if: $CI_AFF3CT_RUNNER_PLAFRIM == "OFF" && $CI_PIPELINE_SOURCE != "schedule"
   
   # Deploy
   - local: 'ci/deploy/deploy_gitlab_com.yml'
     rules: 
-      - if : $CI_SERVER_HOST == "gitlab.com"
+      - if: $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "ppa_upload"
+      - if: $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "develop"
+      - if: $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "master" 
   - local: 'ci/deploy/deploy_github_com.yml'
     rules: 
-      - if : $CI_SERVER_HOST == "github.com"
+      - if: $CI_SERVER_HOST == "github.com" && $CI_COMMIT_BRANCH == "develop" &&  $CI_PIPELINE_SOURCE != "schedule"
 
 
 

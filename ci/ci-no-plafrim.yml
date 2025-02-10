@@ -17,8 +17,6 @@
 
 build-linux-gcc:
   extends: .build-linux-gcc
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "schedule"'
   parallel:
     matrix: 
       - COMPILER: gcc-x64-sse4.2
@@ -68,12 +66,14 @@ build-linux-gcc-opt-artifact:
     paths:
       - ${NAME}
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-linux-gcc-opt:
   extends: .build-linux-gcc-opt
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop" 
 
 ######### build-linux-gcc-mpi
 
@@ -96,12 +96,14 @@ build-linux-gcc-mpi-artifact:
     paths:
       - ${NAME}
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-linux-gcc-mpi:
   extends: .build-linux-gcc-mpi
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop" 
 
 ######### build-linux-gcc-coverage
 
@@ -163,19 +165,19 @@ build-linux-gcc-icpc-artifact:
     paths:
       - build_linux_icpc
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-linux-gcc-icpc:
   extends: .build-linux-icpc-test
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"
 
 
 ####################################################### Check ################################################################################################################################################################
 
 check-documentation:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "schedule"'
   image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_python:v3.8.5
   stage: check
   needs:
@@ -238,8 +240,6 @@ test-regression:
 ### Coverage
 
 .test-coverage:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "schedule"'
   image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_coverage
   stage: coverage
   needs:

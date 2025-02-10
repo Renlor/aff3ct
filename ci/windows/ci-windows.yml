@@ -1,11 +1,12 @@
 ### Windows
 
+# $CI_PIPELINE_SOURCE != "schedule"
+
 .tags-windows:
   tags:
     - x86_64
     - windows
     - nlohmann
-
 
 ################################# Build win #####################################################################################################################################################################################
 
@@ -26,8 +27,6 @@
 .build-win-msys2:
   extends: .config-msys2
   stage: build
-  rules:
-    - if: $CI_PIPELINE_SOURCE != "schedule"
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
     CMAKE_INCLUDE_PATH: C:/msys64/mingw64/include/
@@ -64,12 +63,14 @@ build-windows-gcc_JSON-artifact:
     paths:
       - build_windows_${COMPILER}
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-windows-gcc_JSON:
   extends: .build-windows-gcc_JSON
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"
 
 
 ############### MSVC  ###########################
@@ -78,7 +79,6 @@ build-windows-gcc_JSON:
   extends: .tags-windows 
   stage: build
   rules:
-    - if: $CI_PIPELINE_SOURCE != "schedule"
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
     #CMAKE_TOOLCHAIN_FILE: "C:/Users/ci/vcpkg/scripts/buildsystems/vcpkg.cmake"   #SPU_CMAKE_PREFIX_PATH:C:/Users/ci/vcpkg/installed/x64-windows/debugC:/Users/ci/vcpkg/installed/x64-windows
@@ -113,9 +113,11 @@ build-windows-msvc-avx_JSON-artifact:
     paths:
       - build_windows_msvc_avx
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-windows-msvc-avx_JSON:
   extends: .build-windows-msvc-avx_JSON
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"

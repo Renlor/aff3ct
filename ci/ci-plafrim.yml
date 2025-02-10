@@ -83,8 +83,7 @@
 
 build-linux-gcc:
   extends: .build-plafrim-gcc
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "schedule"'
+
   parallel:
     matrix:
       - COMPILER: gcc-x64-sse4.2
@@ -139,7 +138,8 @@ build-linux-gcc-opt-artifact:
       - ${NAME}.out
       - ${NAME}.err
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-linux-gcc-opt:
   extends: .build-linux-gcc-opt
@@ -149,7 +149,9 @@ build-linux-gcc-opt:
       - ${NAME}.out
       - ${NAME}.err
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop" 
+
 
 ######### build-linux-gcc-mpi
 
@@ -174,7 +176,8 @@ build-linux-gcc-mpi-artifact:
       - ${NAME}.out
       - ${NAME}.err
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-linux-gcc-mpi:
   extends: .build-linux-gcc-mpi
@@ -184,7 +187,8 @@ build-linux-gcc-mpi:
       - ${NAME}.out
       - ${NAME}.err
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"
 
 
 ######### build-linux-gcc-coverage
@@ -228,22 +232,18 @@ build-linux-gcc-coverage:
     CC: icx
     CXX: icpx
 
-
-.build-linux-icpc:
-  extends: .build-plafrim-icpc
-  parallel:
-    matrix:
-      - JSON: ['OFF']
-  variables:
     GIT_TAG: v0.0.0
     CFLAGS: -Wall -funroll-loops -march=native -std=c++11
     CMAKE_OPT: -DAFF3CT_JSON=${JSON} -DAFF3CT_COMPILE_EXE=ON -DAFF3CT_COMPILE_STATIC_LIB=ON -DAFF3CT_COMPILE_SHARED_LIB=ON -DAFF3CT_PREC=MULTI -DAFF3CT_EXT_STRINGS=OFF -DAFF3CT_LINK_GSL=OFF -DAFF3CT_LINK_MKL=ON
     NAME: build_linux_icpc_${JSON}
     MODULE_SPE: linalg/mkl/2022.0.2
+  parallel:
+    matrix:
+    - JSON: ['OFF']
 
 
 build-linux-icpc-artifact:
-  extends: .build-linux-gcc-icpc
+  extends: .build-plafrim-icpc
   artifacts:
     name: build-linux-icpc-json-${JSON}
     paths:
@@ -251,25 +251,25 @@ build-linux-icpc-artifact:
       - ${NAME}.out
       - ${NAME}.err
   rules: 
-    - if : $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "master" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH == "develop"
 
 build-linux-icpc:
-  extends: .build-linux-gcc-icpc
-    artifacts:
+  extends: .build-plafrim-icpc
+  artifacts:
     name: build-linux-icpc-json-${JSON}
     paths:
       - ${NAME}.out
       - ${NAME}.err
   rules: 
-    - if : $CI_SERVER_HOST != "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule"
+    - if: $CI_SERVER_HOST != "gitlab.com" 
+    - if: $CI_SERVER_HOST == "gitlab.com" && $CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"
 
 
 ####################################################### Check ################################################################################################################################################################
 
 check-documentation:
   extends: .config-common-plafrim
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "schedule"'
   stage: check
   needs:
     - job: build-linux-gcc
@@ -389,8 +389,6 @@ test-regression:
 
 .test-coverage:
   extends: .config-common-plafrim
-  rules:
-    - if: '$CI_PIPELINE_SOURCE != "schedule"'
   stage: coverage
   needs:
     - job: build-linux-gcc-coverage

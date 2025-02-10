@@ -1,16 +1,12 @@
+#- if : $CI_SERVER_HOST == "github.com" && $CI_COMMIT_BRANCH == "develop" &&  $CI_PIPELINE_SOURCE != "schedule"
 
+################################# Deploy ####################################################################################################################################################################################
 
 .deploy-github-com:
   tags:
     - linux
   dependencies:
     - coverage-linux
-  rules:
-    - if: $CI_COMMIT_BRANCH == "develop" 
-      when: always
-    - if: $CI_PIPELINE_SOURCE == "schedule"
-      when: never
-    - when: never
   stage: deploy
   allow_failure: true
 
