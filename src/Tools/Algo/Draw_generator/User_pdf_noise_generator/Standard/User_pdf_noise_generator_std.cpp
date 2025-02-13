@@ -58,7 +58,7 @@ User_pdf_noise_generator_std<R>::generate(const R* signal, R* draw, const unsign
 
 template<typename R>
 void
-User_pdf_noise_generator_std<R>::generate(R* draw, const unsigned length, const R noise_power)
+User_pdf_noise_generator_std<R>::generate(R* /*draw*/, const unsigned /*length*/, const R /*noise_power*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

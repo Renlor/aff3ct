@@ -52,7 +52,7 @@ Puncturer_turbo<B, Q>::clone() const
 
 template<typename B, typename Q>
 void
-Puncturer_turbo<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t frame_id) const
+Puncturer_turbo<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t /*frame_id*/) const
 {
     const auto period = get_period(pattern_bits);
 
@@ -105,7 +105,7 @@ Puncturer_turbo<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t frame_id) 
 
 template<typename B, typename Q>
 void
-Puncturer_turbo<B, Q>::_depuncture(const Q* Y_N1, Q* Y_N2, const size_t frame_id) const
+Puncturer_turbo<B, Q>::_depuncture(const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/) const
 {
     const auto period = get_period(pattern_bits);
 

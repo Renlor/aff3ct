@@ -293,10 +293,10 @@ Decoder_turbo_product ::build(const module::Decoder_chase_pyndiah<B, Q>& cp_r,
 
 template<typename B, typename Q>
 module::Decoder_SISO<B, Q>*
-Decoder_turbo_product ::build_siso(const module::Decoder_chase_pyndiah<B, Q>& cp_r,
-                                   const module::Decoder_chase_pyndiah<B, Q>& cp_c,
-                                   const module::Interleaver<Q>& itl,
-                                   module::Encoder<B>* encoder) const
+Decoder_turbo_product ::build_siso(const module::Decoder_chase_pyndiah<B, Q>& /*cp_r*/,
+                                   const module::Decoder_chase_pyndiah<B, Q>& /*cp_c*/,
+                                   const module::Interleaver<Q>& /*itl*/,
+                                   module::Encoder<B>* /*encoder*/) const
 {
     throw spu::tools::cannot_allocate(__FILE__, __LINE__, __func__);
 }

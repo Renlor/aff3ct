@@ -60,7 +60,7 @@ Scaling_factor ::store(const cli::Argument_map_value& vals)
 }
 
 void
-Scaling_factor ::get_headers(std::map<std::string, tools::header_list>& headers, const bool full) const
+Scaling_factor ::get_headers(std::map<std::string, tools::header_list>& headers, const bool /*full*/) const
 {
     auto p = this->get_prefix();
 

@@ -28,7 +28,7 @@ Channel_user_be<R>::clone() const
 
 template<typename R>
 void
-Channel_user_be<R>::_add_noise(const float* CP, const R* X_N, R* Y_N, const size_t frame_id)
+Channel_user_be<R>::_add_noise(const float* /*CP*/, const R* X_N, R* Y_N, const size_t frame_id)
 {
     const mipp::Reg<R> r_erased = tools::unknown_symbol_val<R>();
     const mipp::Reg<E> r_false = (E) false;

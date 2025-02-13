@@ -126,7 +126,7 @@ Decoder_RSC_DB_BCJR<B, R>::_store(B* V_K) const
 
 template<typename B, typename R>
 int
-Decoder_RSC_DB_BCJR<B, R>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t frame_id)
+Decoder_RSC_DB_BCJR<B, R>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t /*frame_id*/)
 {
     __init_alpha_beta();
     __fwd_recursion(sys, par);

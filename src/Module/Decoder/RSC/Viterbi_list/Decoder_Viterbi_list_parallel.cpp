@@ -469,7 +469,7 @@ Decoder_Viterbi_list_parallel<B, Q>::_argmin(std::vector<Q> data)
 
 template<typename B, typename Q>
 int
-Decoder_Viterbi_list_parallel<B, Q>::_decode_siho(const Q* Y_N, B* X_N, const size_t frame_id)
+Decoder_Viterbi_list_parallel<B, Q>::_decode_siho(const Q* Y_N, B* X_N, const size_t /*frame_id*/)
 {
     __reset();
     _forward_pass(Y_N);

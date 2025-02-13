@@ -48,7 +48,8 @@ aff3ct::tools::char_transpose(const signed char* src, signed char* dst, int n)
         return true;
 #endif
     }
-
+    (void)src;
+    (void)dst;
     return false;
 }
 
@@ -88,6 +89,7 @@ aff3ct::tools::char_itranspose(const signed char* src, signed char* dst, int n)
         return true;
 #endif
     }
-
+    (void)src;
+    (void)dst;
     return false;
 }

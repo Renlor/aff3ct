@@ -114,7 +114,7 @@ Monitor_MI<B, R>::get_mutual_info(const B* X, const R* Y, const int frame_id, co
 
 template<typename B, typename R>
 R
-Monitor_MI<B, R>::_get_mutual_info(const B* X, const R* Y, const size_t frame_id)
+Monitor_MI<B, R>::_get_mutual_info(const B* X, const R* Y, const size_t /*frame_id*/)
 {
     R loc_MI_sum = 0;
     for (size_t f = 0; f < this->get_n_frames(); f++)
@@ -129,7 +129,7 @@ Monitor_MI<B, R>::_get_mutual_info(const B* X, const R* Y, const size_t frame_id
 
 template<typename B, typename R>
 R
-Monitor_MI<B, R>::__get_mutual_info(const B* X, const R* Y, const size_t frame_id)
+Monitor_MI<B, R>::__get_mutual_info(const B* /*X*/, const R* /*Y*/, const size_t /*frame_id*/)
 {
     throw spu::tools::runtime_error(
       __FILE__, __LINE__, __func__, "The _get_mutual_info() function does not support this type.");
@@ -143,7 +143,7 @@ namespace module
 #if defined(AFF3CT_MULTI_PREC) | defined(AFF3CT_32BIT_PREC)
 template<>
 R_32
-Monitor_MI<B_32, R_32>::__get_mutual_info(const B_32* X, const R_32* Y, const size_t frame_id)
+Monitor_MI<B_32, R_32>::__get_mutual_info(const B_32* X, const R_32* Y, const size_t /*frame_id*/)
 {
     auto mi = tools::mutual_info_histo(X, Y, get_N());
     this->add_MI_value(mi);
@@ -154,7 +154,7 @@ Monitor_MI<B_32, R_32>::__get_mutual_info(const B_32* X, const R_32* Y, const si
 #if defined(AFF3CT_MULTI_PREC) | defined(AFF3CT_64BIT_PREC)
 template<>
 R_64
-Monitor_MI<B_64, R_64>::__get_mutual_info(const B_64* X, const R_64* Y, const size_t frame_id)
+Monitor_MI<B_64, R_64>::__get_mutual_info(const B_64* X, const R_64* Y, const size_t /*frame_id*/)
 {
     auto mi = tools::mutual_info_histo(X, Y, get_N());
     this->add_MI_value(mi);

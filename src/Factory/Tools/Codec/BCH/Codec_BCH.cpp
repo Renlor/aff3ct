@@ -70,7 +70,7 @@ Codec_BCH ::get_headers(std::map<std::string, tools::header_list>& headers, cons
 
 template<typename B, typename Q>
 tools::Codec_BCH<B, Q>*
-Codec_BCH ::build(const module::CRC<B>* crc) const
+Codec_BCH ::build(const module::CRC<B>* /*crc*/) const
 {
     return new tools::Codec_BCH<B, Q>(dynamic_cast<const Encoder_BCH&>(*enc), dynamic_cast<const Decoder_BCH&>(*dec));
 }

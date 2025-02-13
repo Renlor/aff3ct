@@ -362,7 +362,7 @@ Modem ::get_buffer_size_after_filtering(const std::string& type,
 }
 
 bool
-Modem ::is_complex_mod(const std::string& type, const int bps, const tools::Constellation<float>* c)
+Modem ::is_complex_mod(const std::string& type, const int /*bps*/, const tools::Constellation<float>* c)
 {
     if (c != nullptr && has_constellation(type)) return module::Modem_generic<>::is_complex_mod(*c);
 
@@ -375,7 +375,7 @@ Modem ::is_complex_mod(const std::string& type, const int bps, const tools::Cons
 }
 
 bool
-Modem ::is_complex_fil(const std::string& type, const int bps, const tools::Constellation<float>* c)
+Modem ::is_complex_fil(const std::string& type, const int /*bps*/, const tools::Constellation<float>* c)
 {
     if (c != nullptr && has_constellation(type)) return module::Modem_generic<>::is_complex_fil(*c);
 

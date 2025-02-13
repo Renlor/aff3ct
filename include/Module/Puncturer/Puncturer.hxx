@@ -180,14 +180,14 @@ Puncturer<B, Q>::depuncture(const Q* Y_N1, Q* Y_N2, const int frame_id, const bo
 
 template<typename B, typename Q>
 void
-Puncturer<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t frame_id) const
+Puncturer<B, Q>::_puncture(const B* /*X_N1*/, B* /*X_N2*/, const size_t /*frame_id*/) const
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename Q>
 void
-Puncturer<B, Q>::_depuncture(const Q* Y_N1, Q* Y_N2, const size_t frame_id) const
+Puncturer<B, Q>::_depuncture(const Q* /*Y_N1*/, Q* /*Y_N2*/, const size_t /*frame_id*/) const
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

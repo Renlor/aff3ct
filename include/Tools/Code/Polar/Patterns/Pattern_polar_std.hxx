@@ -72,7 +72,7 @@ Pattern_polar_std ::h() const
 }
 
 int
-Pattern_polar_std ::_match(const int& reverse_graph_depth, const Binary_node<Pattern_polar_i>* node_curr) const
+Pattern_polar_std ::_match(const int& /*reverse_graph_depth*/, const Binary_node<Pattern_polar_i>* /*node_curr*/) const
 {
     int match_val = 1;
 

@@ -44,7 +44,7 @@ signum(T x, std::false_type is_signed)
 
 template<typename T>
 inline constexpr T
-signum(T x, std::true_type is_signed)
+signum(T x, std::true_type /*is_signed*/)
 {
     return (T(0) < x) - (x < T(0));
 }

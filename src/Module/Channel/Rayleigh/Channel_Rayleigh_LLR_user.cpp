@@ -173,7 +173,7 @@ Channel_Rayleigh_LLR_user<R>::read_gains(const std::string& gains_filename)
 
 template<typename R>
 void
-Channel_Rayleigh_LLR_user<R>::_add_noise_wg(const float* CP, const R* X_N, R* H_N, R* Y_N, const size_t frame_id)
+Channel_Rayleigh_LLR_user<R>::_add_noise_wg(const float* CP, const R* X_N, R* H_N, R* Y_N, const size_t /*frame_id*/)
 {
     // get all the needed gains from the stock
     for (unsigned i = 0; i < gains.size(); ++i)

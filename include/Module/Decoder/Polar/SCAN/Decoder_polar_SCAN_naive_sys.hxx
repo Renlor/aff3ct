@@ -84,7 +84,7 @@ template<typename B,
          tools::proto_i<R> I,
          tools::proto_s<R> S>
 int
-Decoder_polar_SCAN_naive_sys<B, R, F, V, H, I, S>::_decode_siso(const R* Y_N1, R* Y_N2, const size_t frame_id)
+Decoder_polar_SCAN_naive_sys<B, R, F, V, H, I, S>::_decode_siso(const R* Y_N1, R* Y_N2, const size_t /*frame_id*/)
 {
     // ----------------------------------------------------------------------------------------------------------- LOAD
     this->_load(Y_N1);

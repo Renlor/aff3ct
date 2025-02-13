@@ -90,7 +90,7 @@ Pattern_polar_r0_left ::h() const
 }
 
 int
-Pattern_polar_r0_left ::_match(const int& reverse_graph_depth, const Binary_node<Pattern_polar_i>* node_curr) const
+Pattern_polar_r0_left ::_match(const int& /*reverse_graph_depth*/, const Binary_node<Pattern_polar_i>* node_curr) const
 {
     const Pattern_polar_i* pattern_left = node_curr->get_left()->get_contents();
 

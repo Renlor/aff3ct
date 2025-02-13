@@ -36,7 +36,7 @@ Reporter_EXIT<B, R>::create_groups()
 
 template<typename B, typename R>
 typename Reporter_EXIT<B, R>::report_t
-Reporter_EXIT<B, R>::report(bool final)
+Reporter_EXIT<B, R>::report(bool /*final*/)
 {
     assert(this->cols_groups.size() == 1);
 

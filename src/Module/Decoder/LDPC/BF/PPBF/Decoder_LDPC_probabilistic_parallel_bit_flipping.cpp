@@ -59,7 +59,7 @@ Decoder_LDPC_probabilistic_parallel_bit_flipping<B, R>::clone() const
 
 template<typename B, typename R>
 void
-Decoder_LDPC_probabilistic_parallel_bit_flipping<B, R>::cn_process(const B* VN, B* CN, const size_t frame_id)
+Decoder_LDPC_probabilistic_parallel_bit_flipping<B, R>::cn_process(const B* VN, B* CN, const size_t /*frame_id*/)
 {
     // for each check nodes
     const auto n_chk_nodes = (int)this->H.get_n_cols();
@@ -79,7 +79,7 @@ void
 Decoder_LDPC_probabilistic_parallel_bit_flipping<B, R>::vn_process(const B* Y_N,
                                                                    B* VN,
                                                                    const B* CN,
-                                                                   const size_t frame_id)
+                                                                   const size_t /*frame_id*/)
 {
     // for each variable nodes
     const auto n_var_nodes = (int)this->H.get_n_rows();

@@ -128,17 +128,17 @@ Codec ::get_prefixes() const
 }
 
 void
-Codec ::get_description(cli::Argument_map_info& args) const
+Codec ::get_description(cli::Argument_map_info& /*args*/) const
 {
 }
 
 void
-Codec ::store(const cli::Argument_map_value& vals)
+Codec ::store(const cli::Argument_map_value& /*vals*/)
 {
 }
 
 void
-Codec ::get_headers(std::map<std::string, tools::header_list>& headers, const bool full) const
+Codec ::get_headers(std::map<std::string, tools::header_list>& headers, const bool /*full*/) const
 {
     auto p = this->get_prefix();
     auto v = tools::split(this->get_name(), ' ');

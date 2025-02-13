@@ -19,7 +19,7 @@ namespace tools
 
 template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS>
 void
-rep_inter<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+rep_inter<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * mipp::nElReg<R>();
@@ -69,7 +69,7 @@ rep_inter<B, R, HI, 0>::apply(const R* __restrict l_a, B* __restrict s_a, const 
 
 template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS>
 void
-spc_inter<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+spc_inter<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * mipp::nElReg<R>();

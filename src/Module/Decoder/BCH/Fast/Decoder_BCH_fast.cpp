@@ -307,7 +307,7 @@ Decoder_BCH_fast<B, R>::_decode(const size_t frame_id)
 
 template<typename B, typename R>
 void
-Decoder_BCH_fast<B, R>::_load(const B* Y_N, const size_t frame_id)
+Decoder_BCH_fast<B, R>::_load(const B* Y_N, const size_t /*frame_id*/)
 {
     // reorder data into mipp registers
     std::vector<const B*> frames(mipp::N<B>());

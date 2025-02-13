@@ -572,7 +572,7 @@ using namespace aff3ct::factory;
 
 template<typename B, typename Q, class API_polar>
 module::Decoder_SIHO<B, Q>*
-Decoder_polar ::_build_gen(const module::CRC<B>* crc, module::Encoder<B>* encoder) const
+Decoder_polar ::_build_gen(const module::CRC<B>* crc, module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "SC")
     {

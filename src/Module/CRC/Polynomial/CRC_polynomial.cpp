@@ -105,7 +105,7 @@ CRC_polynomial<B>::get_value(const std::string& poly_key)
 
 template<typename B>
 void
-CRC_polynomial<B>::_build(const B* U_K1, B* U_K2, const size_t frame_id)
+CRC_polynomial<B>::_build(const B* U_K1, B* U_K2, const size_t /*frame_id*/)
 {
     std::copy(U_K1, U_K1 + this->K, U_K2);
     this->_generate(U_K1, U_K2, 0, this->K, this->K);
@@ -129,14 +129,14 @@ CRC_polynomial<B>::_generate(const B* U_in, B* U_out, const int off_in, const in
 
 template<typename B>
 void
-CRC_polynomial<B>::_extract(const B* V_K1, B* V_K2, const size_t frame_id)
+CRC_polynomial<B>::_extract(const B* V_K1, B* V_K2, const size_t /*frame_id*/)
 {
     std::copy(V_K1, V_K1 + this->K, V_K2);
 }
 
 template<typename B>
 bool
-CRC_polynomial<B>::_check(const B* V_K, const size_t frame_id)
+CRC_polynomial<B>::_check(const B* V_K, const size_t /*frame_id*/)
 {
     this->_generate(V_K, this->buff_crc.data(), 0, this->K, this->K);
 

@@ -27,7 +27,7 @@ Encoder_AZCW<B>::clone() const
 
 template<typename B>
 void
-Encoder_AZCW<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_AZCW<B>::_encode(const B* /*U_K*/, B* X_N, const size_t /*frame_id*/)
 {
     std::fill(X_N, X_N + this->N, (B)0);
 }

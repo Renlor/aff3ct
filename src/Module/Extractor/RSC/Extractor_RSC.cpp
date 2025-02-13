@@ -36,7 +36,7 @@ Extractor_RSC<B, Q>::clone() const
 
 template<typename B, typename Q>
 void
-Extractor_RSC<B, Q>::_get_sys_and_par_llr(const Q* Y_N, Q* sys, Q* par, const size_t frame_id)
+Extractor_RSC<B, Q>::_get_sys_and_par_llr(const Q* Y_N, Q* sys, Q* par, const size_t /*frame_id*/)
 {
     const auto tb_2 = this->tail_length / 2;
     const auto K = this->K;
@@ -59,7 +59,7 @@ Extractor_RSC<B, Q>::_get_sys_and_par_llr(const Q* Y_N, Q* sys, Q* par, const si
 
 template<typename B, typename Q>
 void
-Extractor_RSC<B, Q>::_get_sys_llr(const Q* Y_N, Q* sys, const size_t frame_id)
+Extractor_RSC<B, Q>::_get_sys_llr(const Q* Y_N, Q* sys, const size_t /*frame_id*/)
 {
     if (buffered_encoding)
         std::copy(Y_N, Y_N + this->K, sys);
@@ -70,7 +70,7 @@ Extractor_RSC<B, Q>::_get_sys_llr(const Q* Y_N, Q* sys, const size_t frame_id)
 
 template<typename B, typename Q>
 void
-Extractor_RSC<B, Q>::_add_sys_and_ext_llr(const Q* ext, Q* Y_N, const size_t frame_id)
+Extractor_RSC<B, Q>::_add_sys_and_ext_llr(const Q* ext, Q* Y_N, const size_t /*frame_id*/)
 {
     if (buffered_encoding)
         for (auto i = 0; i < this->K; i++)
@@ -82,7 +82,7 @@ Extractor_RSC<B, Q>::_add_sys_and_ext_llr(const Q* ext, Q* Y_N, const size_t fra
 
 template<typename B, typename Q>
 void
-Extractor_RSC<B, Q>::_get_sys_bit(const Q* Y_N, B* V_K, const size_t frame_id)
+Extractor_RSC<B, Q>::_get_sys_bit(const Q* Y_N, B* V_K, const size_t /*frame_id*/)
 {
     if (buffered_encoding)
         for (auto i = 0; i < this->K; i++)

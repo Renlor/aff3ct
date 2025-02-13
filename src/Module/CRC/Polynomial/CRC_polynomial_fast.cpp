@@ -54,7 +54,7 @@ CRC_polynomial_fast<B>::clone() const
 
 template<typename B>
 void
-CRC_polynomial_fast<B>::_build(const B* U_K1, B* U_K2, const size_t frame_id)
+CRC_polynomial_fast<B>::_build(const B* U_K1, B* U_K2, const size_t /*frame_id*/)
 {
 #if __BYTE_ORDER != __LITTLE_ENDIAN
     throw spu::tools::runtime_error(
@@ -81,7 +81,7 @@ CRC_polynomial_fast<B>::_check(const B* V_K, const size_t frame_id)
 
 template<typename B>
 bool
-CRC_polynomial_fast<B>::_check_packed(const B* V_K, const size_t frame_id)
+CRC_polynomial_fast<B>::_check_packed(const B* V_K, const size_t /*frame_id*/)
 {
 #if __BYTE_ORDER != __LITTLE_ENDIAN
     throw spu::tools::runtime_error(

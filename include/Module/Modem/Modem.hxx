@@ -564,54 +564,62 @@ Modem<B, R, Q>::get_buffer_size_after_filtering(const int N,
 
 template<typename B, typename R, typename Q>
 void
-Modem<B, R, Q>::_modulate(const B* X_N1, R* X_N2, const size_t frame_id)
+Modem<B, R, Q>::_modulate(const B* /*X_N1*/, R* /*X_N2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename R, typename Q>
 void
-Modem<B, R, Q>::_tmodulate(const Q* X_N1, R* X_N2, const size_t frame_id)
+Modem<B, R, Q>::_tmodulate(const Q* /*X_N1*/, R* /*X_N2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename R, typename Q>
 void
-Modem<B, R, Q>::_filter(const float* CP, const R* Y_N1, R* Y_N2, const size_t frame_id)
+Modem<B, R, Q>::_filter(const float* /*CP*/, const R* /*Y_N1*/, R* /*Y_N2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename R, typename Q>
 void
-Modem<B, R, Q>::_demodulate(const float* CP, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem<B, R, Q>::_demodulate(const float* /*CP*/, const Q* /*Y_N1*/, Q* /*Y_N2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename R, typename Q>
 void
-Modem<B, R, Q>::_demodulate_wg(const float* CP, const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem<B, R, Q>::_demodulate_wg(const float* /*CP*/,
+                               const R* /*H_N*/,
+                               const Q* /*Y_N1*/,
+                               Q* /*Y_N2*/,
+                               const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename R, typename Q>
 void
-Modem<B, R, Q>::_tdemodulate(const float* CP, const Q* Y_N1, const Q* Y_N2, Q* Y_N3, const size_t frame_id)
+Modem<B, R, Q>::_tdemodulate(const float* /*CP*/,
+                             const Q* /*Y_N1*/,
+                             const Q* /*Y_N2*/,
+                             Q* /*Y_N3*/,
+                             const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename R, typename Q>
 void
-Modem<B, R, Q>::_tdemodulate_wg(const float* CP,
-                                const R* H_N,
-                                const Q* Y_N1,
-                                const Q* Y_N2,
-                                Q* Y_N3,
-                                const size_t frame_id)
+Modem<B, R, Q>::_tdemodulate_wg(const float* /*CP*/,
+                                const R* /*H_N*/,
+                                const Q* /*Y_N1*/,
+                                const Q* /*Y_N2*/,
+                                Q* /*Y_N3*/,
+                                const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

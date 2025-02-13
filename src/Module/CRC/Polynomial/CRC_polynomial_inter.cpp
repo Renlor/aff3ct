@@ -40,7 +40,7 @@ CRC_polynomial_inter<B>::_build(const B* U_K1, B* U_K2, const size_t frame_id)
 
 template<typename B>
 bool
-CRC_polynomial_inter<B>::_check(const B* V_K, const size_t frame_id)
+CRC_polynomial_inter<B>::_check(const B* V_K, const size_t /*frame_id*/)
 {
     this->_generate_INTER(V_K,
                           this->buff_crc_inter.data(),
@@ -60,7 +60,7 @@ CRC_polynomial_inter<B>::_check(const B* V_K, const size_t frame_id)
 
 template<typename B>
 bool
-CRC_polynomial_inter<B>::_check_packed(const B* V_K, const size_t frame_id)
+CRC_polynomial_inter<B>::_check_packed(const B* /*V_K*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

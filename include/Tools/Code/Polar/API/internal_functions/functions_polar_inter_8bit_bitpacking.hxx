@@ -27,8 +27,8 @@ g_inter_8bit_bitpacking<B, R, GI, N_ELMTS>::apply(const R* __restrict l_a,
                                                   const R* __restrict l_b,
                                                   const B* __restrict s_a,
                                                   R* __restrict l_c,
-                                                  const int init_shift,
-                                                  const int n_elmts)
+                                                  const int /*init_shift*/,
+                                                  const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>() * (sizeof(B) * 8);
     constexpr auto _n_elmts = N_ELMTS * mipp::nElReg<R>();
@@ -60,7 +60,7 @@ g_inter_8bit_bitpacking<B, R, GI, 0>::apply(const R* __restrict l_a,
                                             const R* __restrict l_b,
                                             const B* __restrict s_a,
                                             R* __restrict l_c,
-                                            const int init_shift,
+                                            const int /*init_shift*/,
                                             const int n_elmts)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>() * (sizeof(B) * 8);
@@ -94,7 +94,7 @@ g_inter_8bit_bitpacking<B, R, GI, 4>::apply(const R* __restrict l_a,
                                             const B* __restrict s_a,
                                             R* __restrict l_c,
                                             const int init_shift,
-                                            const int n_elmts)
+                                            const int /*n_elmts*/)
 {
     const auto r_mask = mipp::set1<B>(spu::tools::bit_init<B>());
     const auto r_u_packed = mipp::load<B>(s_a);
@@ -121,7 +121,7 @@ g_inter_8bit_bitpacking<B, R, GI, 2>::apply(const R* __restrict l_a,
                                             const B* __restrict s_a,
                                             R* __restrict l_c,
                                             const int init_shift,
-                                            const int n_elmts)
+                                            const int /*n_elmts*/)
 {
     const auto r_mask = mipp::set1<B>(spu::tools::bit_init<B>());
     const auto r_u_packed = mipp::load<B>(s_a);
@@ -148,7 +148,7 @@ g_inter_8bit_bitpacking<B, R, GI, 1>::apply(const R* __restrict l_a,
                                             const B* __restrict s_a,
                                             R* __restrict l_c,
                                             const int init_shift,
-                                            const int n_elmts)
+                                            const int /*n_elmts*/)
 {
     const auto r_mask = mipp::set1<B>(spu::tools::bit_init<B>());
     const auto r_u_packed = mipp::load<B>(s_a);
@@ -173,7 +173,7 @@ gr_inter_8bit_bitpacking<B, R, GI, N_ELMTS>::apply(const R* __restrict l_a,
                                                    const B* __restrict s_a,
                                                    R* __restrict l_c,
                                                    const int init_shift,
-                                                   const int n_elmts)
+                                                   const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * mipp::nElReg<R>();
@@ -230,8 +230,8 @@ template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS>
 void
 h_inter_8bit_bitpacking<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a,
                                                   B* __restrict s_a,
-                                                  const int init_shift,
-                                                  const int n_elmts)
+                                                  const int /*init_shift*/,
+                                                  const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>() * (sizeof(B) * 8);
     constexpr auto _n_elmts = N_ELMTS * mipp::nElReg<R>();
@@ -257,7 +257,7 @@ template<typename B, typename R, proto_h_i<B, R> HI>
 void
 h_inter_8bit_bitpacking<B, R, HI, 0>::apply(const R* __restrict l_a,
                                             B* __restrict s_a,
-                                            const int init_shift,
+                                            const int /*init_shift*/,
                                             const int n_elmts)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>() * (sizeof(B) * 8);
@@ -285,7 +285,7 @@ void
 h_inter_8bit_bitpacking<B, R, HI, 4>::apply(const R* __restrict l_a,
                                             B* __restrict s_a,
                                             const int init_shift,
-                                            const int n_elmts)
+                                            const int /*n_elmts*/)
 {
     const auto r_init = mipp::set1<B>(0x0F);
     const auto r_mask = mipp::lshift<B>(r_init, init_shift);
@@ -307,7 +307,7 @@ void
 h_inter_8bit_bitpacking<B, R, HI, 2>::apply(const R* __restrict l_a,
                                             B* __restrict s_a,
                                             const int init_shift,
-                                            const int n_elmts)
+                                            const int /*n_elmts*/)
 {
     const auto r_init = mipp::set1<B>(0x03);
     const auto r_mask = mipp::lshift<B>(r_init, init_shift);
@@ -329,7 +329,7 @@ void
 h_inter_8bit_bitpacking<B, R, HI, 1>::apply(const R* __restrict l_a,
                                             B* __restrict s_a,
                                             const int init_shift,
-                                            const int n_elmts)
+                                            const int /*n_elmts*/)
 {
     const auto r_init = mipp::set1<B>(0x01);
     const auto r_mask = mipp::lshift<B>(r_init, init_shift);
@@ -349,7 +349,7 @@ h_inter_8bit_bitpacking<B, R, HI, 1>::apply(const R* __restrict l_a,
 
 template<typename B, int N_ELMTS>
 void
-h0_inter_8bit_bitpacking<B, N_ELMTS>::apply(B* __restrict s_a, const int init_shift, const int n_elmts)
+h0_inter_8bit_bitpacking<B, N_ELMTS>::apply(B* __restrict s_a, const int /*init_shift*/, const int /*n_elmts*/)
 {
     constexpr auto _n_elmts = (N_ELMTS * mipp::nElmtsPerRegister<B>()) / (sizeof(B) * 8);
     std::fill(s_a, s_a + _n_elmts, 0);
@@ -357,7 +357,7 @@ h0_inter_8bit_bitpacking<B, N_ELMTS>::apply(B* __restrict s_a, const int init_sh
 
 template<typename B>
 void
-h0_inter_8bit_bitpacking<B, 0>::apply(B* __restrict s_a, const int init_shift, const int n_elmts)
+h0_inter_8bit_bitpacking<B, 0>::apply(B* __restrict s_a, const int /*init_shift*/, const int n_elmts)
 {
     const auto _n_elmts = (n_elmts * mipp::nElmtsPerRegister<B>()) / (sizeof(B) * 8);
     std::fill(s_a, s_a + _n_elmts, 0);
@@ -365,7 +365,7 @@ h0_inter_8bit_bitpacking<B, 0>::apply(B* __restrict s_a, const int init_shift, c
 
 template<typename B>
 void
-h0_inter_8bit_bitpacking<B, 4>::apply(B* __restrict s_a, const int init_shift, const int n_elmts)
+h0_inter_8bit_bitpacking<B, 4>::apply(B* __restrict s_a, const int init_shift, const int /*n_elmts*/)
 {
     const auto r_init = mipp::set1<B>(0x0F);
     const auto r_mask = mipp::lshift<B>(r_init, init_shift);
@@ -377,7 +377,7 @@ h0_inter_8bit_bitpacking<B, 4>::apply(B* __restrict s_a, const int init_shift, c
 
 template<typename B>
 void
-h0_inter_8bit_bitpacking<B, 2>::apply(B* __restrict s_a, const int init_shift, const int n_elmts)
+h0_inter_8bit_bitpacking<B, 2>::apply(B* __restrict s_a, const int init_shift, const int /*n_elmts*/)
 {
     const auto r_init = mipp::set1<B>(0x03);
     const auto r_mask = mipp::lshift<B>(r_init, init_shift);
@@ -389,7 +389,7 @@ h0_inter_8bit_bitpacking<B, 2>::apply(B* __restrict s_a, const int init_shift, c
 
 template<typename B>
 void
-h0_inter_8bit_bitpacking<B, 1>::apply(B* __restrict s_a, const int init_shift, const int n_elmts)
+h0_inter_8bit_bitpacking<B, 1>::apply(B* __restrict s_a, const int init_shift, const int /*n_elmts*/)
 {
     const auto r_init = mipp::set1<B>(0x01);
     const auto r_mask = mipp::lshift<B>(r_init, init_shift);
@@ -407,8 +407,8 @@ template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS>
 void
 rep_inter_8bit_bitpacking<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a,
                                                     B* __restrict s_a,
-                                                    const int init_shift,
-                                                    const int n_elmts)
+                                                    const int /*init_shift*/,
+                                                    const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * mipp::nElReg<R>();
@@ -449,7 +449,7 @@ template<typename B, typename R, proto_h_i<B, R> HI>
 void
 rep_inter_8bit_bitpacking<B, R, HI, 0>::apply(const R* __restrict l_a,
                                               B* __restrict s_a,
-                                              const int init_shift,
+                                              const int /*init_shift*/,
                                               const int n_elmts)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
@@ -492,7 +492,7 @@ void
 rep_inter_8bit_bitpacking<B, R, HI, 4>::apply(const R* __restrict l_a,
                                               B* __restrict s_a,
                                               const int init_shift,
-                                              const int n_elmts)
+                                              const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = 4 * mipp::nElReg<R>();
@@ -544,7 +544,7 @@ void
 rep_inter_8bit_bitpacking<B, R, HI, 2>::apply(const R* __restrict l_a,
                                               B* __restrict s_a,
                                               const int init_shift,
-                                              const int n_elmts)
+                                              const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = 2 * mipp::nElReg<R>();
@@ -593,8 +593,8 @@ template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS>
 void
 spc_inter_8bit_bitpacking<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a,
                                                     B* __restrict s_a,
-                                                    const int init_shift,
-                                                    const int n_elmts)
+                                                    const int /*init_shift*/,
+                                                    const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>() * (sizeof(B) * 8);
     constexpr auto stride2 = mipp::nElmtsPerRegister<R>();
@@ -662,7 +662,7 @@ template<typename B, typename R, proto_h_i<B, R> HI>
 void
 spc_inter_8bit_bitpacking<B, R, HI, 0>::apply(const R* __restrict l_a,
                                               B* __restrict s_a,
-                                              const int init_shift,
+                                              const int /*init_shift*/,
                                               const int n_elmts)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>() * (sizeof(B) * 8);
@@ -732,7 +732,7 @@ void
 spc_inter_8bit_bitpacking<B, R, HI, 4>::apply(const R* __restrict l_a,
                                               B* __restrict s_a,
                                               const int init_shift,
-                                              const int n_elmts)
+                                              const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
 
@@ -805,8 +805,8 @@ void
 xo_inter_8bit_bitpacking<B, XOI, N_ELMTS>::apply(const B* __restrict s_a,
                                                  const B* __restrict s_b,
                                                  B* __restrict s_c,
-                                                 const int init_shift,
-                                                 const int n_elmts)
+                                                 const int /*init_shift*/,
+                                                 const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<B>();
     constexpr auto _n_elmts = (unsigned)((N_ELMTS * mipp::nElReg<B>()) / (sizeof(B) * 8));
@@ -825,7 +825,7 @@ void
 xo_inter_8bit_bitpacking<B, XOI, 0>::apply(const B* __restrict s_a,
                                            const B* __restrict s_b,
                                            B* __restrict s_c,
-                                           const int init_shift,
+                                           const int /*init_shift*/,
                                            const int n_elmts)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<B>();
@@ -843,10 +843,10 @@ xo_inter_8bit_bitpacking<B, XOI, 0>::apply(const B* __restrict s_a,
 template<typename B, proto_xo_i<B> XOI>
 void
 xo_inter_8bit_bitpacking<B, XOI, 4>::apply(const B* __restrict s_a,
-                                           const B* __restrict s_b,
+                                           const B* __restrict /*s_b*/,
                                            B* __restrict s_c,
-                                           const int init_shift,
-                                           const int n_elmts)
+                                           const int /*init_shift*/,
+                                           const int /*n_elmts*/)
 {
     // TODO: warning this next line works only for bytes
     const auto r_init = mipp::set1<B>(0x0F);
@@ -861,10 +861,10 @@ xo_inter_8bit_bitpacking<B, XOI, 4>::apply(const B* __restrict s_a,
 template<typename B, proto_xo_i<B> XOI>
 void
 xo_inter_8bit_bitpacking<B, XOI, 2>::apply(const B* __restrict s_a,
-                                           const B* __restrict s_b,
+                                           const B* __restrict /*s_b*/,
                                            B* __restrict s_c,
                                            const int init_shift,
-                                           const int n_elmts)
+                                           const int /*n_elmts*/)
 {
     // TODO: warning this next line is hard coded for bytes
     const auto r_init = mipp::set1<B>(0x03);
@@ -879,10 +879,10 @@ xo_inter_8bit_bitpacking<B, XOI, 2>::apply(const B* __restrict s_a,
 template<typename B, proto_xo_i<B> XOI>
 void
 xo_inter_8bit_bitpacking<B, XOI, 1>::apply(const B* __restrict s_a,
-                                           const B* __restrict s_b,
+                                           const B* __restrict /*s_b*/,
                                            B* __restrict s_c,
                                            const int init_shift,
-                                           const int n_elmts)
+                                           const int /*n_elmts*/)
 {
     // TODO: warning this next line is hard coded for bytes
     const auto r_init = mipp::set1<B>(0x01);
@@ -902,8 +902,8 @@ template<typename B, int N_ELMTS>
 void
 xo0_inter_8bit_bitpacking<B, N_ELMTS>::apply(const B* __restrict s_b,
                                              B* __restrict s_c,
-                                             const int init_shift,
-                                             const int n_elmts)
+                                             const int /*init_shift*/,
+                                             const int /*n_elmts*/)
 {
     constexpr auto _n_elmts = (N_ELMTS * mipp::nElReg<B>()) / (sizeof(B) * 8);
 #ifdef _MSC_VER
@@ -917,7 +917,7 @@ template<typename B>
 void
 xo0_inter_8bit_bitpacking<B, 0>::apply(const B* __restrict s_b,
                                        B* __restrict s_c,
-                                       const int init_shift,
+                                       const int /*init_shift*/,
                                        const int n_elmts)
 {
     const auto _n_elmts = (n_elmts * mipp::nElReg<B>()) / (sizeof(B) * 8);
@@ -932,8 +932,8 @@ template<typename B>
 void
 xo0_inter_8bit_bitpacking<B, 4>::apply(const B* __restrict s_b,
                                        B* __restrict s_c,
-                                       const int init_shift,
-                                       const int n_elmts)
+                                       const int /*init_shift*/,
+                                       const int /*n_elmts*/)
 {
     // TODO: warning this next line works only for bytes
     const auto r_init = mipp::set1<B>(0x0F);
@@ -951,7 +951,7 @@ void
 xo0_inter_8bit_bitpacking<B, 2>::apply(const B* __restrict s_b,
                                        B* __restrict s_c,
                                        const int init_shift,
-                                       const int n_elmts)
+                                       const int /*n_elmts*/)
 {
     // TODO: warning this next line works only for bytes
     const auto r_init = mipp::set1<B>(0x03);
@@ -969,7 +969,7 @@ void
 xo0_inter_8bit_bitpacking<B, 1>::apply(const B* __restrict s_b,
                                        B* __restrict s_c,
                                        const int init_shift,
-                                       const int n_elmts)
+                                       const int /*n_elmts*/)
 {
     // TODO: warning this next line works only for bytes
     const auto r_init = mipp::set1<B>(0x01);

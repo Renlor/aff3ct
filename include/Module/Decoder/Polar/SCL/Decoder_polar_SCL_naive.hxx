@@ -425,7 +425,7 @@ Decoder_polar_SCL_naive<B, R, F, G>::duplicate_path(int path, int leaf_index)
 
 template<typename B, typename R, tools::proto_f<R> F, tools::proto_g<B, R> G>
 void
-Decoder_polar_SCL_naive<B, R, F, G>::select_best_path(const size_t frame_id)
+Decoder_polar_SCL_naive<B, R, F, G>::select_best_path(const size_t /*frame_id*/)
 {
     int best_path = 0;
     if (active_paths.size() >= 1) best_path = *active_paths.begin();

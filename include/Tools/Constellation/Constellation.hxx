@@ -117,7 +117,7 @@ Constellation<R>::size() const
 
 template<typename R>
 typename Constellation<R>::S
-Constellation<R>::bits_to_symbol(const uint8_t bits[]) const
+Constellation<R>::bits_to_symbol(const uint8_t /*bits*/[]) const
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

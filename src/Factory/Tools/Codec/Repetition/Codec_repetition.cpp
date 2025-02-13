@@ -68,7 +68,7 @@ Codec_repetition ::get_headers(std::map<std::string, tools::header_list>& header
 
 template<typename B, typename Q>
 tools::Codec_repetition<B, Q>*
-Codec_repetition ::build(const module::CRC<B>* crc) const
+Codec_repetition ::build(const module::CRC<B>* /*crc*/) const
 {
     return new tools::Codec_repetition<B, Q>(dynamic_cast<const Encoder_repetition&>(*enc),
                                              dynamic_cast<const Decoder_repetition&>(*dec));

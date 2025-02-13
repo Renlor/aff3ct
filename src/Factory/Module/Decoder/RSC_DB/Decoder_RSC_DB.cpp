@@ -78,7 +78,7 @@ Decoder_RSC_DB ::get_headers(std::map<std::string, tools::header_list>& headers,
 
 template<typename B, typename Q, tools::proto_max<Q> MAX>
 module::Decoder_RSC_DB_BCJR<B, Q>*
-Decoder_RSC_DB ::_build_siso(const std::vector<std::vector<int>>& trellis, module::Encoder<B>* encoder) const
+Decoder_RSC_DB ::_build_siso(const std::vector<std::vector<int>>& trellis, module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "BCJR")
     {

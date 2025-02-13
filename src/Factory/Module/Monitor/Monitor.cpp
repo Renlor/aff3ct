@@ -26,16 +26,16 @@ Monitor ::clone() const
 }
 
 void
-Monitor ::get_description(cli::Argument_map_info& args) const
+Monitor ::get_description(cli::Argument_map_info& /*args*/) const
 {
 }
 
 void
-Monitor ::store(const cli::Argument_map_value& vals)
+Monitor ::store(const cli::Argument_map_value& /*vals*/)
 {
 }
 
 void
-Monitor ::get_headers(std::map<std::string, tools::header_list>& headers, const bool full) const
+Monitor ::get_headers(std::map<std::string, tools::header_list>& /*headers*/, const bool /*full*/) const
 {
 }

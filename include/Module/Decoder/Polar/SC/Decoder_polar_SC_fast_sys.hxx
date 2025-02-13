@@ -328,7 +328,7 @@ Decoder_polar_SC_fast_sys<B, R, API_polar>::_decode()
 
 template<typename B, typename R, class API_polar>
 int
-Decoder_polar_SC_fast_sys<B, R, API_polar>::_decode_siho(const R* Y_N, B* V_K, const size_t frame_id)
+Decoder_polar_SC_fast_sys<B, R, API_polar>::_decode_siho(const R* Y_N, B* V_K, const size_t /*frame_id*/)
 {
     if (!API_polar::isAligned(Y_N))
         throw spu::tools::runtime_error(__FILE__, __LINE__, __func__, "'Y_N' is misaligned memory.");
@@ -361,7 +361,7 @@ Decoder_polar_SC_fast_sys<B, R, API_polar>::_decode_siho(const R* Y_N, B* V_K, c
 
 template<typename B, typename R, class API_polar>
 int
-Decoder_polar_SC_fast_sys<B, R, API_polar>::_decode_siho_cw(const R* Y_N, B* V_N, const size_t frame_id)
+Decoder_polar_SC_fast_sys<B, R, API_polar>::_decode_siho_cw(const R* Y_N, B* V_N, const size_t /*frame_id*/)
 {
     if (!API_polar::isAligned(Y_N))
         throw spu::tools::runtime_error(__FILE__, __LINE__, __func__, "'Y_N' is misaligned memory.");

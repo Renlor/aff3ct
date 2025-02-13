@@ -218,7 +218,7 @@ Decoder_HIHO<B>::_decode_hiho(const B* Y_N, int8_t* CWD, B* V_K, const size_t fr
 
 template<typename B>
 int
-Decoder_HIHO<B>::_decode_hiho(const B* Y_N, B* V_K, const size_t frame_id)
+Decoder_HIHO<B>::_decode_hiho(const B* /*Y_N*/, B* /*V_K*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -234,7 +234,7 @@ Decoder_HIHO<B>::_decode_hiho_cw(const B* Y_N, int8_t* CWD, B* V_N, const size_t
 
 template<typename B>
 int
-Decoder_HIHO<B>::_decode_hiho_cw(const B* Y_N, B* V_N, const size_t frame_id)
+Decoder_HIHO<B>::_decode_hiho_cw(const B* /*Y_N*/, B* /*V_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

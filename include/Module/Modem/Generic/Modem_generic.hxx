@@ -92,7 +92,7 @@ Modem_generic<B, R, Q, MAX>::_tmodulate(const Q* X_N1, R* X_N2, const size_t fra
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_filter(const float* CP, const R* Y_N1, R* Y_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_filter(const float* /*CP*/, const R* Y_N1, R* Y_N2, const size_t /*frame_id*/)
 {
     std::copy(Y_N1, Y_N1 + this->N_fil, Y_N2);
 }
@@ -156,7 +156,7 @@ Modem_generic<B, R, Q, MAX>::_tdemodulate_wg(const float* CP,
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_modulate_complex(const B* X_N1, R* X_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_modulate_complex(const B* X_N1, R* X_N2, const size_t /*frame_id*/)
 {
     auto size_in = this->N;
     auto size_out = this->N_mod;
@@ -188,7 +188,7 @@ Modem_generic<B, R, Q, MAX>::_modulate_complex(const B* X_N1, R* X_N2, const siz
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_demodulate_complex(const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_demodulate_complex(const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -221,7 +221,7 @@ Modem_generic<B, R, Q, MAX>::_demodulate_complex(const Q* Y_N1, Q* Y_N2, const s
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_demodulate_wg_complex(const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_demodulate_wg_complex(const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -257,7 +257,7 @@ Modem_generic<B, R, Q, MAX>::_demodulate_wg_complex(const R* H_N, const Q* Y_N1,
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_tdemodulate_complex(const Q* Y_N1, const Q* Y_N2, Q* Y_N3, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_tdemodulate_complex(const Q* Y_N1, const Q* Y_N2, Q* Y_N3, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -311,7 +311,7 @@ Modem_generic<B, R, Q, MAX>::_tdemodulate_wg_complex(const R* H_N,
                                                      const Q* Y_N1,
                                                      const Q* Y_N2,
                                                      Q* Y_N3,
-                                                     const size_t frame_id)
+                                                     const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -363,7 +363,7 @@ Modem_generic<B, R, Q, MAX>::_tdemodulate_wg_complex(const R* H_N,
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_tmodulate_complex(const Q* X_N1, R* X_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_tmodulate_complex(const Q* X_N1, R* X_N2, const size_t /*frame_id*/)
 {
     auto size_in = this->N;
     auto size_out = this->N_mod;
@@ -413,7 +413,7 @@ Modem_generic<B, R, Q, MAX>::_tmodulate_complex(const Q* X_N1, R* X_N2, const si
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_modulate_real(const B* X_N1, R* X_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_modulate_real(const B* X_N1, R* X_N2, const size_t /*frame_id*/)
 {
     auto size_in = this->N;
     auto size_out = this->N_mod;
@@ -445,7 +445,7 @@ Modem_generic<B, R, Q, MAX>::_modulate_real(const B* X_N1, R* X_N2, const size_t
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_demodulate_real(const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_demodulate_real(const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -474,7 +474,7 @@ Modem_generic<B, R, Q, MAX>::_demodulate_real(const Q* Y_N1, Q* Y_N2, const size
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_demodulate_wg_real(const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_demodulate_wg_real(const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -507,7 +507,7 @@ Modem_generic<B, R, Q, MAX>::_demodulate_wg_real(const R* H_N, const Q* Y_N1, Q*
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_tdemodulate_real(const Q* Y_N1, const Q* Y_N2, Q* Y_N3, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_tdemodulate_real(const Q* Y_N1, const Q* Y_N2, Q* Y_N3, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -558,7 +558,7 @@ Modem_generic<B, R, Q, MAX>::_tdemodulate_wg_real(const R* H_N,
                                                   const Q* Y_N1,
                                                   const Q* Y_N2,
                                                   Q* Y_N3,
-                                                  const size_t frame_id)
+                                                  const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -606,7 +606,7 @@ Modem_generic<B, R, Q, MAX>::_tdemodulate_wg_real(const R* H_N,
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_generic<B, R, Q, MAX>::_tmodulate_real(const Q* X_N1, R* X_N2, const size_t frame_id)
+Modem_generic<B, R, Q, MAX>::_tmodulate_real(const Q* X_N1, R* X_N2, const size_t /*frame_id*/)
 {
     auto size_in = this->N;
     auto size_out = this->N_mod;

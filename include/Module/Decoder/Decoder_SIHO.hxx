@@ -235,7 +235,7 @@ Decoder_SIHO<B, R>::_decode_siho(const R* Y_N, int8_t* CWD, B* V_K, const size_t
 
 template<typename B, typename R>
 int
-Decoder_SIHO<B, R>::_decode_siho(const R* Y_N, B* V_K, const size_t frame_id)
+Decoder_SIHO<B, R>::_decode_siho(const R* /*Y_N*/, B* /*V_K*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -251,7 +251,7 @@ Decoder_SIHO<B, R>::_decode_siho_cw(const R* Y_N, int8_t* CWD, B* V_N, const siz
 
 template<typename B, typename R>
 int
-Decoder_SIHO<B, R>::_decode_siho_cw(const R* Y_N, B* V_N, const size_t frame_id)
+Decoder_SIHO<B, R>::_decode_siho_cw(const R* /*Y_N*/, B* /*V_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -267,7 +267,7 @@ Decoder_SIHO<B, R>::_decode_hiho(const B* Y_N, int8_t* CWD, B* V_K, const size_t
 
 template<typename B, typename R>
 int
-Decoder_SIHO<B, R>::_decode_hiho(const B* Y_N, B* V_K, const size_t frame_id)
+Decoder_SIHO<B, R>::_decode_hiho(const B* /*Y_N*/, B* /*V_K*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -283,7 +283,7 @@ Decoder_SIHO<B, R>::_decode_hiho_cw(const B* Y_N, int8_t* CWD, B* V_N, const siz
 
 template<typename B, typename R>
 int
-Decoder_SIHO<B, R>::_decode_hiho_cw(const B* Y_N, B* V_N, const size_t frame_id)
+Decoder_SIHO<B, R>::_decode_hiho_cw(const B* /*Y_N*/, B* /*V_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

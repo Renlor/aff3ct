@@ -289,7 +289,7 @@ Interleaver_core_ARP_DVB_RCS2<T>::clone() const
 
 template<typename T>
 void
-Interleaver_core_ARP_DVB_RCS2<T>::gen_lut(T* lut, const size_t frame_id)
+Interleaver_core_ARP_DVB_RCS2<T>::gen_lut(T* lut, const size_t /*frame_id*/)
 {
     int q = 0;
     int size = this->get_size();

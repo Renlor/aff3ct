@@ -236,7 +236,7 @@ module::Decoder_turbo_DB<B, Q>*
 Decoder_turbo_DB ::build(const module::Decoder_RSC_DB_BCJR<B, Q>& siso_n,
                          const module::Decoder_RSC_DB_BCJR<B, Q>& siso_i,
                          const module::Interleaver<Q>& itl,
-                         module::Encoder<B>* encoder) const
+                         module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "TURBO_DB")
     {

@@ -30,7 +30,7 @@ Decoder_BCH_genius<B, R>::Decoder_BCH_genius(const int K, const int N, const int
 
 template<typename B, typename R>
 int
-Decoder_BCH_genius<B, R>::_decode(B* Y_N, const size_t frame_id)
+Decoder_BCH_genius<B, R>::_decode(B* /*Y_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

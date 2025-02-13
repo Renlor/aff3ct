@@ -105,12 +105,12 @@ Decoder ::reset(const int frame_id)
 }
 
 void
-Decoder ::_reset(const size_t frame_id)
+Decoder ::_reset(const size_t /*frame_id*/)
 {
 }
 
 void
-Decoder ::set_seed(const int seed)
+Decoder ::set_seed(const int /*seed*/)
 {
     // do nothing in the general case, this method has to be overrided
 }

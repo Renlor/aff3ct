@@ -114,7 +114,7 @@ Decoder_maximum_likelihood_std<B, R>::_decode_hiho(const B* Y_N, B* V_K, const s
 
 template<typename B, typename R>
 int
-Decoder_maximum_likelihood_std<B, R>::_decode_hiho_cw(const B* Y_N, B* V_N, const size_t frame_id)
+Decoder_maximum_likelihood_std<B, R>::_decode_hiho_cw(const B* Y_N, B* V_N, const size_t /*frame_id*/)
 {
     this->min_hamming_dist = std::numeric_limits<uint32_t>::max();
 

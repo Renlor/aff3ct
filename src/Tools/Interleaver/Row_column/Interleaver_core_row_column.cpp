@@ -58,7 +58,7 @@ Interleaver_core_row_column<T>::clone() const
 
 template<typename T>
 void
-Interleaver_core_row_column<T>::gen_lut(T* lut, const size_t frame_id)
+Interleaver_core_row_column<T>::gen_lut(T* lut, const size_t /*frame_id*/)
 {
     T idx = 0;
     switch (read_order)

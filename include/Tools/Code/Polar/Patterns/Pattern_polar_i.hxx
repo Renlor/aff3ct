@@ -164,19 +164,19 @@ Pattern_polar_i ::get_max_lvl()
 }
 
 std::string
-Pattern_polar_i ::apply_f(std::string start_indent, std::string str_off_l, std::string str_off_s) const
+Pattern_polar_i ::apply_f(std::string /*start_indent*/, std::string /*str_off_l*/, std::string /*str_off_s*/) const
 {
     return "";
 }
 
 std::string
-Pattern_polar_i ::apply_g(std::string start_indent, std::string str_off_l, std::string str_off_s) const
+Pattern_polar_i ::apply_g(std::string /*start_indent*/, std::string /*str_off_l*/, std::string /*str_off_s*/) const
 {
     return "";
 }
 
 std::string
-Pattern_polar_i ::apply_h(std::string start_indent, std::string str_off_l, std::string str_off_s) const
+Pattern_polar_i ::apply_h(std::string /*start_indent*/, std::string /*str_off_l*/, std::string /*str_off_s*/) const
 {
     return "";
 }

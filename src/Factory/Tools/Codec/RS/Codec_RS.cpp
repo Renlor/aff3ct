@@ -79,7 +79,7 @@ Codec_RS ::get_headers(std::map<std::string, tools::header_list>& headers, const
 
 template<typename B, typename Q>
 tools::Codec_RS<B, Q>*
-Codec_RS ::build(const module::CRC<B>* crc) const
+Codec_RS ::build(const module::CRC<B>* /*crc*/) const
 {
     return new tools::Codec_RS<B, Q>(dynamic_cast<const Encoder_RS&>(*enc), dynamic_cast<const Decoder_RS&>(*dec));
 }

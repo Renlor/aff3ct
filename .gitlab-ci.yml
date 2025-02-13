@@ -1,6 +1,24 @@
 variables:
   GIT_SUBMODULE_STRATEGY: none
 
+workflow:
+  auto_cancel:
+    on_new_commit: interruptible
+
+  rules:
+    - if: $CI_COMMIT_TITLE =~ /-draft$/ # add '-draft' to 1st commit message line end to ignore pipeline
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_AFF3CT_ON_JOB_FAILURE == "none"
+      auto_cancel:
+        on_job_failure: none
+    - if: $CI_AFF3CT_ON_JOB_FAILURE != "none"
+      auto_cancel:
+        on_job_failure: all
+
+
+
 stages:
   - analysis
   - build

@@ -157,17 +157,17 @@ struct RSC_BCJR_seq_post<signed char, RD>
 template<typename R>
 struct RSC_BCJR_seq_normalize
 {
-    static void apply(mipp::vector<R> metrics[8], const int& i)
+    static void apply(mipp::vector<R> /*metrics*/[8], const int& /*i*/)
     {
         // no need to do something
     }
 
-    static void apply(R metrics[8][mipp::nElReg<R>()], const int& i)
+    static void apply(R /*metrics*/[8][mipp::nElReg<R>()], const int& /*i*/)
     {
         // no need to do something
     }
 
-    static void apply(R metrics[8], const int& i)
+    static void apply(R /*metrics*/[8], const int& /*i*/)
     {
         // no need to do something
     }
@@ -229,7 +229,7 @@ struct RSC_BCJR_seq_normalize<signed char>
             metrics[j][i] = spu::tools::saturate<signed char>(metrics[j][i] - norm_val, -63, +63);
     }
 
-    static void apply(signed char metrics[8], const int& i)
+    static void apply(signed char metrics[8], const int& /*i*/)
     {
         // normalization & saturation
         auto norm_val = metrics[0];

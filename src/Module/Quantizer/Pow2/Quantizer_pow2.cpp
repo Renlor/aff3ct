@@ -34,7 +34,7 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_pow2<float, float>::Quantizer_pow2(const int N, const short& fixed_point_pos)
+Quantizer_pow2<float, float>::Quantizer_pow2(const int N, const short& /*fixed_point_pos*/)
   : Quantizer<float, float>(N)
   , val_max(0)
   , val_min(0)
@@ -54,7 +54,7 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_pow2<double, double>::Quantizer_pow2(const int N, const short& fixed_point_pos)
+Quantizer_pow2<double, double>::Quantizer_pow2(const int N, const short& /*fixed_point_pos*/)
   : Quantizer<double, double>(N)
   , val_max(0)
   , val_min(0)
@@ -132,7 +132,9 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_pow2<float, float>::Quantizer_pow2(const int N, const short& fixed_point_pos, const short& saturation_pos)
+Quantizer_pow2<float, float>::Quantizer_pow2(const int N,
+                                             const short& /*fixed_point_pos*/,
+                                             const short& /*saturation_pos*/)
   : Quantizer<float, float>(N)
   , val_max(0)
   , val_min(0)
@@ -152,7 +154,9 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_pow2<double, double>::Quantizer_pow2(const int N, const short& fixed_point_pos, const short& saturation_pos)
+Quantizer_pow2<double, double>::Quantizer_pow2(const int N,
+                                               const short& /*fixed_point_pos*/,
+                                               const short& /*saturation_pos*/)
   : Quantizer<double, double>(N)
   , val_max(0)
   , val_min(0)
@@ -178,7 +182,7 @@ Quantizer_pow2<R, Q>::clone() const
 
 template<typename R, typename Q>
 void
-Quantizer_pow2<R, Q>::_process(const R* Y_N1, Q* Y_N2, const size_t frame_id)
+Quantizer_pow2<R, Q>::_process(const R* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     auto size = (unsigned)(this->N);
     for (unsigned i = 0; i < size; i++)

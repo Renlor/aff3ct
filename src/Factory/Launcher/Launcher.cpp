@@ -138,7 +138,7 @@ Launcher ::store(const cli::Argument_map_value& vals)
 }
 
 void
-Launcher ::get_headers(std::map<std::string, tools::header_list>& params_headers, const bool full) const
+Launcher ::get_headers(std::map<std::string, tools::header_list>& params_headers, const bool /*full*/) const
 {
     auto p = this->get_prefix();
 

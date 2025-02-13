@@ -269,7 +269,7 @@ int
 Decoder_RSC_BCJR_seq_very_fast<B, R, RD, MAX1, MAX2>::_decode_siso_alt(const R* sys,
                                                                        const R* par,
                                                                        R* ext,
-                                                                       const size_t frame_id)
+                                                                       const size_t /*frame_id*/)
 {
     this->compute_gamma(sys, par);
     this->compute_alpha();

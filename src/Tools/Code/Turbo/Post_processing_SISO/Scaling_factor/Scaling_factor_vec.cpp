@@ -23,7 +23,10 @@ Scaling_factor_vec<B, R>::clone() const
 
 template<typename B, typename R>
 bool
-Scaling_factor_vec<B, R>::siso_n(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext, mipp::vector<B>& s)
+Scaling_factor_vec<B, R>::siso_n(const int /*ite*/,
+                                 const mipp::vector<R>& /*sys*/,
+                                 mipp::vector<R>& ext,
+                                 mipp::vector<B>& /*s*/)
 {
     const auto loop_size1 = (int)(ext.size() / mipp::nElReg<R>());
     const auto loop_size2 = (int)(ext.size());
@@ -60,7 +63,7 @@ Scaling_factor_vec<B, R>::siso_n(const int ite, const mipp::vector<R>& sys, mipp
 
 template<typename B, typename R>
 bool
-Scaling_factor_vec<B, R>::siso_i(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext)
+Scaling_factor_vec<B, R>::siso_i(const int ite, const mipp::vector<R>& /*sys*/, mipp::vector<R>& ext)
 {
     if (ite < this->n_ite - 1)
     {

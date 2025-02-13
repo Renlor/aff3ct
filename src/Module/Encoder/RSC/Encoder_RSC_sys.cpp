@@ -52,7 +52,7 @@ Encoder_RSC_sys<B>::tail_length() const
 
 template<typename B>
 void
-Encoder_RSC_sys<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_RSC_sys<B>::_encode(const B* U_K, B* X_N, const size_t /*frame_id*/)
 {
     if (buffered_encoding)
         __encode(U_K,

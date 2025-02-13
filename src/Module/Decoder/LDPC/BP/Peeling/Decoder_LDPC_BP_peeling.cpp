@@ -42,7 +42,7 @@ Decoder_LDPC_BP_peeling<B, R>::clone() const
 
 template<typename B, typename R>
 bool
-Decoder_LDPC_BP_peeling<B, R>::_decode(const size_t frame_id)
+Decoder_LDPC_BP_peeling<B, R>::_decode(const size_t /*frame_id*/)
 {
     this->cur_syndrome_depth = 0;
     auto links = this->H;
@@ -225,7 +225,7 @@ Decoder_LDPC_BP_peeling<B, R>::_decode_siho_cw(const R* Y_N, int8_t* CWD, B* V_N
 
 template<typename B, typename R>
 void
-Decoder_LDPC_BP_peeling<B, R>::_store(B* V_K, const size_t frame_id)
+Decoder_LDPC_BP_peeling<B, R>::_store(B* V_K, const size_t /*frame_id*/)
 {
     for (auto i = 0; i < this->K; i++)
         V_K[i] = this->var_nodes[this->info_bits_pos[i]];
@@ -233,7 +233,7 @@ Decoder_LDPC_BP_peeling<B, R>::_store(B* V_K, const size_t frame_id)
 
 template<typename B, typename R>
 void
-Decoder_LDPC_BP_peeling<B, R>::_store_cw(B* V_N, const size_t frame_id)
+Decoder_LDPC_BP_peeling<B, R>::_store_cw(B* V_N, const size_t /*frame_id*/)
 {
     std::copy(this->var_nodes.begin(), this->var_nodes.end(), V_N);
 }

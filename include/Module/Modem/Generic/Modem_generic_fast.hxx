@@ -48,23 +48,23 @@ Modem_generic_fast<B, R, Q, MAX, MAXI>::clone() const
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX, tools::proto_max_i<Q> MAXI>
 void
-Modem_generic_fast<B, R, Q, MAX, MAXI>::_tdemodulate(const float* CP,
-                                                     const Q* Y_N1,
-                                                     const Q* Y_N2,
-                                                     Q* Y_N3,
-                                                     const size_t frame_id)
+Modem_generic_fast<B, R, Q, MAX, MAXI>::_tdemodulate(const float* /*CP*/,
+                                                     const Q* /*Y_N1*/,
+                                                     const Q* /*Y_N2*/,
+                                                     Q* /*Y_N3*/,
+                                                     const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX, tools::proto_max_i<Q> MAXI>
 void
-Modem_generic_fast<B, R, Q, MAX, MAXI>::_tdemodulate_wg(const float* CP,
-                                                        const R* H_N,
-                                                        const Q* Y_N1,
-                                                        const Q* Y_N2,
-                                                        Q* Y_N3,
-                                                        const size_t frame_id)
+Modem_generic_fast<B, R, Q, MAX, MAXI>::_tdemodulate_wg(const float* /*CP*/,
+                                                        const R* /*H_N*/,
+                                                        const Q* /*Y_N1*/,
+                                                        const Q* /*Y_N2*/,
+                                                        Q* /*Y_N3*/,
+                                                        const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -140,13 +140,13 @@ kernel_demodulate_complex_SIMD(const Q* Y_N1,
 template<typename Q, tools::proto_max_i<Q> MAXI>
 struct demodulate_complex_SIMD
 {
-    static size_t compute(const Q* Y_N1,
-                          Q* Y_N2,
-                          const int N,
-                          const std::vector<std::complex<Q>>& cstl,
-                          const int bits_per_symbol,
-                          const int nbr_symbols,
-                          const Q inv_sigma2)
+    static size_t compute(const Q* /*Y_N1*/,
+                          Q* /*Y_N2*/,
+                          const int /*N*/,
+                          const std::vector<std::complex<Q>>& /*cstl*/,
+                          const int /*bits_per_symbol*/,
+                          const int /*nbr_symbols*/,
+                          const Q /*inv_sigma2*/)
     {
         throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
     }
@@ -190,7 +190,7 @@ struct demodulate_complex_SIMD<double, MAXI>
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX, tools::proto_max_i<Q> MAXI>
 void
-Modem_generic_fast<B, R, Q, MAX, MAXI>::_demodulate_complex(const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_generic_fast<B, R, Q, MAX, MAXI>::_demodulate_complex(const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -304,14 +304,14 @@ kernel_demodulate_wg_complex_SIMD(const Q* H_N,
 template<typename R, typename Q, tools::proto_max_i<Q> MAXI>
 struct demodulate_wg_complex_SIMD
 {
-    static size_t compute(const R* H_N,
-                          const Q* Y_N1,
-                          Q* Y_N2,
-                          const int N,
-                          const std::vector<std::complex<Q>>& cstl,
-                          const int bits_per_symbol,
-                          const int nbr_symbols,
-                          const Q inv_sigma2)
+    static size_t compute(const R* /*H_N*/,
+                          const Q* /*Y_N1*/,
+                          Q* /*Y_N2*/,
+                          const int /*N*/,
+                          const std::vector<std::complex<Q>>& /*cstl*/,
+                          const int /*bits_per_symbol*/,
+                          const int /*nbr_symbols*/,
+                          const Q /*inv_sigma2*/)
     {
         throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
     }
@@ -360,7 +360,7 @@ void
 Modem_generic_fast<B, R, Q, MAX, MAXI>::_demodulate_wg_complex(const R* H_N,
                                                                const Q* Y_N1,
                                                                Q* Y_N2,
-                                                               const size_t frame_id)
+                                                               const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -463,13 +463,13 @@ kernel_demodulate_real_SIMD(const Q* Y_N1,
 template<typename Q, tools::proto_max_i<Q> MAXI>
 struct demodulate_real_SIMD
 {
-    static size_t compute(const Q* Y_N1,
-                          Q* Y_N2,
-                          const int N,
-                          const std::vector<std::complex<Q>>& cstl,
-                          const int bits_per_symbol,
-                          const int nbr_symbols,
-                          const Q inv_sigma2)
+    static size_t compute(const Q* /*Y_N1*/,
+                          Q* /*Y_N2*/,
+                          const int /*N*/,
+                          const std::vector<std::complex<Q>>& /*cstl*/,
+                          const int /*bits_per_symbol*/,
+                          const int /*nbr_symbols*/,
+                          const Q /*inv_sigma2*/)
     {
         throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
     }
@@ -511,7 +511,7 @@ struct demodulate_real_SIMD<double, MAXI>
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX, tools::proto_max_i<Q> MAXI>
 void
-Modem_generic_fast<B, R, Q, MAX, MAXI>::_demodulate_real(const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_generic_fast<B, R, Q, MAX, MAXI>::_demodulate_real(const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -613,14 +613,14 @@ kernel_demodulate_wg_real_SIMD(const Q* H_N,
 template<typename R, typename Q, tools::proto_max_i<Q> MAXI>
 struct demodulate_wg_real_SIMD
 {
-    static size_t compute(const R* H_N,
-                          const Q* Y_N1,
-                          Q* Y_N2,
-                          const int N,
-                          const std::vector<std::complex<Q>>& cstl,
-                          const int bits_per_symbol,
-                          const int nbr_symbols,
-                          const Q inv_sigma2)
+    static size_t compute(const R* /*H_N*/,
+                          const Q* /*Y_N1*/,
+                          Q* /*Y_N2*/,
+                          const int /*N*/,
+                          const std::vector<std::complex<Q>>& /*cstl*/,
+                          const int /*bits_per_symbol*/,
+                          const int /*nbr_symbols*/,
+                          const Q /*inv_sigma2*/)
     {
         throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
     }
@@ -666,7 +666,10 @@ struct demodulate_wg_real_SIMD<double, double, MAXI>
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX, tools::proto_max_i<Q> MAXI>
 void
-Modem_generic_fast<B, R, Q, MAX, MAXI>::_demodulate_wg_real(const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_generic_fast<B, R, Q, MAX, MAXI>::_demodulate_wg_real(const R* H_N,
+                                                            const Q* Y_N1,
+                                                            Q* Y_N2,
+                                                            const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");

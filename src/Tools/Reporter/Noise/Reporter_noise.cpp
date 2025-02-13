@@ -44,7 +44,7 @@ Reporter_noise<R>::Reporter_noise(const Noise<R>& noise, const bool show_sigma)
 
 template<typename R>
 spu::tools::Reporter::report_t
-Reporter_noise<R>::report(bool final)
+Reporter_noise<R>::report(bool /*final*/)
 {
     assert(this->cols_groups.size() == 1);
 

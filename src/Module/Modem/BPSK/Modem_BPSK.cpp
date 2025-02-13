@@ -34,7 +34,7 @@ Modem_BPSK<B, R, Q>::clone() const
 
 template<typename B, typename R, typename Q>
 void
-Modem_BPSK<B, R, Q>::_modulate(const B* X_N1, R* X_N2, const size_t frame_id)
+Modem_BPSK<B, R, Q>::_modulate(const B* X_N1, R* X_N2, const size_t /*frame_id*/)
 {
     auto size = (unsigned int)(this->N);
     for (unsigned i = 0; i < size; i++)
@@ -43,14 +43,14 @@ Modem_BPSK<B, R, Q>::_modulate(const B* X_N1, R* X_N2, const size_t frame_id)
 
 template<typename B, typename R, typename Q>
 void
-Modem_BPSK<B, R, Q>::_filter(const float* CP, const R* Y_N1, R* Y_N2, const size_t frame_id)
+Modem_BPSK<B, R, Q>::_filter(const float* /*CP*/, const R* Y_N1, R* Y_N2, const size_t /*frame_id*/)
 {
     std::copy(Y_N1, Y_N1 + this->N_fil, Y_N2);
 }
 
 template<typename B, typename R, typename Q>
 void
-Modem_BPSK<B, R, Q>::_demodulate(const float* CP, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_BPSK<B, R, Q>::_demodulate(const float* CP, const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (disable_sig2)
         std::copy(Y_N1, Y_N1 + this->N, Y_N2);
@@ -72,7 +72,7 @@ Modem_BPSK<B, R, Q>::_demodulate(const float* CP, const Q* Y_N1, Q* Y_N2, const 
 
 template<typename B, typename R, typename Q>
 void
-Modem_BPSK<B, R, Q>::_demodulate_wg(const float* CP, const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_BPSK<B, R, Q>::_demodulate_wg(const float* CP, const R* H_N, const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (!std::is_same<R, Q>::value)
         throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "Type 'R' and 'Q' have to be the same.");
@@ -98,7 +98,7 @@ Modem_BPSK<B, R, Q>::_demodulate_wg(const float* CP, const R* H_N, const Q* Y_N1
 
 template<typename B, typename R, typename Q>
 void
-Modem_BPSK<B, R, Q>::_tdemodulate(const float* CP, const Q* Y_N1, const Q* Y_N2, Q* Y_N3, const size_t frame_id)
+Modem_BPSK<B, R, Q>::_tdemodulate(const float* CP, const Q* Y_N1, const Q* /*Y_N2*/, Q* Y_N3, const size_t frame_id)
 {
     this->_demodulate(CP, Y_N1, Y_N3, frame_id);
 }
@@ -108,7 +108,7 @@ void
 Modem_BPSK<B, R, Q>::_tdemodulate_wg(const float* CP,
                                      const R* H_N,
                                      const Q* Y_N1,
-                                     const Q* Y_N2,
+                                     const Q* /*Y_N2*/,
                                      Q* Y_N3,
                                      const size_t frame_id)
 {

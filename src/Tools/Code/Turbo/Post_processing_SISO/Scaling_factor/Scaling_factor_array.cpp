@@ -12,7 +12,10 @@ Scaling_factor_array<B, R>::Scaling_factor_array(const int n_ite, const mipp::ve
 
 template<typename B, typename R>
 bool
-Scaling_factor_array<B, R>::siso_n(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext, mipp::vector<B>& s)
+Scaling_factor_array<B, R>::siso_n(const int ite,
+                                   const mipp::vector<R>& /*sys*/,
+                                   mipp::vector<R>& ext,
+                                   mipp::vector<B>& /*s*/)
 {
     const auto id = (2 * (ite - 1) + 0) >= (int)alpha_array.size() ? (int)alpha_array.size() - 1 : 2 * (ite - 1) + 0;
     const auto alpha = (R)alpha_array[id];
@@ -35,7 +38,7 @@ Scaling_factor_array<B, R>::clone() const
 
 template<typename B, typename R>
 bool
-Scaling_factor_array<B, R>::siso_i(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext)
+Scaling_factor_array<B, R>::siso_i(const int ite, const mipp::vector<R>& /*sys*/, mipp::vector<R>& ext)
 {
     const auto id = (2 * (ite - 1) + 1) >= (int)alpha_array.size() ? (int)alpha_array.size() - 1 : 2 * (ite - 1) + 1;
     const auto alpha = (R)alpha_array[id];

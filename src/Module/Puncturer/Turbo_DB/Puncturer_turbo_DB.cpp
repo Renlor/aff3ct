@@ -68,7 +68,7 @@ Puncturer_turbo_DB<B, Q>::clone() const
 
 template<typename B, typename Q>
 void
-Puncturer_turbo_DB<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t frame_id) const
+Puncturer_turbo_DB<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t /*frame_id*/) const
 {
     if (coderate == "1/3") // Pattern: [1] [1]
     {
@@ -168,7 +168,7 @@ Puncturer_turbo_DB<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t frame_i
 
 template<typename B, typename Q>
 void
-Puncturer_turbo_DB<B, Q>::_depuncture(const Q* Y_N1, Q* Y_N2, const size_t frame_id) const
+Puncturer_turbo_DB<B, Q>::_depuncture(const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/) const
 {
     if (coderate == "1/3") // Pattern: [1] [1]
     {

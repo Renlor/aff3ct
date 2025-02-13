@@ -28,7 +28,7 @@ Decoder_NO<B, R>::clone() const
 
 template<typename B, typename R>
 int
-Decoder_NO<B, R>::_decode_siso(const R* sys, const R* par, R* ext, const size_t frame_id)
+Decoder_NO<B, R>::_decode_siso(const R* sys, const R* /*par*/, R* ext, const size_t /*frame_id*/)
 {
     std::copy(sys, sys + this->K, ext);
 
@@ -37,7 +37,7 @@ Decoder_NO<B, R>::_decode_siso(const R* sys, const R* par, R* ext, const size_t 
 
 template<typename B, typename R>
 int
-Decoder_NO<B, R>::_decode_siso(const R* Y_K1, R* Y_K2, const size_t frame_id)
+Decoder_NO<B, R>::_decode_siso(const R* Y_K1, R* Y_K2, const size_t /*frame_id*/)
 {
     std::copy(Y_K1, Y_K1 + this->K, Y_K2);
 
@@ -46,7 +46,7 @@ Decoder_NO<B, R>::_decode_siso(const R* Y_K1, R* Y_K2, const size_t frame_id)
 
 template<typename B, typename R>
 int
-Decoder_NO<B, R>::_decode_siho(const R* Y_K, B* V_K, const size_t frame_id)
+Decoder_NO<B, R>::_decode_siho(const R* Y_K, B* V_K, const size_t /*frame_id*/)
 {
     //	auto t_store = std::chrono::steady_clock::now(); // ---------------------------------------------------------
     // STORE
@@ -60,7 +60,7 @@ Decoder_NO<B, R>::_decode_siho(const R* Y_K, B* V_K, const size_t frame_id)
 
 template<typename B, typename R>
 int
-Decoder_NO<B, R>::_decode_siho_cw(const R* Y_K, B* V_K, const size_t frame_id)
+Decoder_NO<B, R>::_decode_siho_cw(const R* Y_K, B* V_K, const size_t /*frame_id*/)
 {
     //	auto t_store = std::chrono::steady_clock::now(); // ---------------------------------------------------------
     // STORE

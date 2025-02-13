@@ -150,7 +150,7 @@ Decoder_chase_std<B, R>::_decode_siho_cw_hamming(B* V_N)
 
 template<typename B, typename R>
 int
-Decoder_chase_std<B, R>::_decode_siho_cw(const R* Y_N, B* V_N, const size_t frame_id)
+Decoder_chase_std<B, R>::_decode_siho_cw(const R* Y_N, B* V_N, const size_t /*frame_id*/)
 {
     tools::hard_decide(Y_N, V_N, this->N);
 

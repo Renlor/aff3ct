@@ -47,7 +47,7 @@ Decoder_NO ::get_headers(std::map<std::string, tools::header_list>& headers, con
 
 template<typename B, typename Q>
 module::Decoder_SISO<B, Q>*
-Decoder_NO ::build_siso(module::Encoder<B>* encoder) const
+Decoder_NO ::build_siso(module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "NONE" && this->implem == "HARD_DECISION") return new module::Decoder_NO<B, Q>(this->K);
 

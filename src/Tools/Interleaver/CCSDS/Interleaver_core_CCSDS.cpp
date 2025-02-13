@@ -24,7 +24,7 @@ Interleaver_core_CCSDS<T>::clone() const
 
 template<typename T>
 void
-Interleaver_core_CCSDS<T>::gen_lut(T* lut, const size_t frame_id)
+Interleaver_core_CCSDS<T>::gen_lut(T* lut, const size_t /*frame_id*/)
 {
     std::map<T, T> k_1;
     std::map<T, T> k_2;

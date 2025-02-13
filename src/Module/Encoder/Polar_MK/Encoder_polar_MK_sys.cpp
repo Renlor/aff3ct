@@ -39,7 +39,7 @@ Encoder_polar_MK_sys<B>::clone() const
 
 template<typename B>
 void
-Encoder_polar_MK_sys<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_polar_MK_sys<B>::_encode(const B* U_K, B* X_N, const size_t /*frame_id*/)
 {
     this->convert(U_K, X_N);
 

@@ -14,9 +14,9 @@ Scaling_factor_adaptive<B, R>::Scaling_factor_adaptive(const int n_ite)
 template<typename B, typename R>
 bool
 Scaling_factor_adaptive<B, R>::siso_n(const int ite,
-                                      const mipp::vector<R>& sys,
+                                      const mipp::vector<R>& /*sys*/,
                                       mipp::vector<R>& ext,
-                                      mipp::vector<B>& s)
+                                      mipp::vector<B>& /*s*/)
 {
     const auto loop_size = (int)ext.size();
 
@@ -45,7 +45,7 @@ Scaling_factor_adaptive<B, R>::clone() const
 
 template<typename B, typename R>
 bool
-Scaling_factor_adaptive<B, R>::siso_i(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext)
+Scaling_factor_adaptive<B, R>::siso_i(const int ite, const mipp::vector<R>& /*sys*/, mipp::vector<R>& ext)
 {
     const auto loop_size = (int)ext.size();
 
