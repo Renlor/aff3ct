@@ -129,6 +129,25 @@ analysis-clang:
     - source ./ci/tools/threads.sh
     - ./ci/analysis-clang.sh
 
+analysis-git-submodules:
+  extends: .tags-linux
+  rules:
+    - if: $CI_COMMIT_BRANCH == "ppa_upload"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - when: always
+  image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_git:v2.25.1
+  stage: analysis
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "develop"
+    - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "master"
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  script:
+    - source ./ci/tools/git-branch.sh
+    - ./ci/deploy/analysis-git-submodule.sh
+
 analysis-documentation:
   image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_doc
   stage: analysis
@@ -166,6 +185,23 @@ include:
       - if: $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "ppa_upload"
       - if: $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "develop"
       - if: $CI_SERVER_HOST == "gitlab.com" && $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "master" 
-  - local: 'ci/deploy/deploy-github-com.yml'
-    rules: 
-      - if: $CI_SERVER_HOST == "github.com" && $CI_COMMIT_BRANCH == "develop" && $CI_PIPELINE_SOURCE != "schedule"
+
+###########################
+## deploy coverage pages ##
+###########################
+
+pages:
+  stage: deploy
+  rules:
+      - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "develop"
+  tags:
+    - linux
+  dependencies:
+    - coverage-linux
+  allow_failure: true
+  script:
+    - mv code_coverage_report/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days

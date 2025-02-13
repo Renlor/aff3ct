@@ -1,28 +1,6 @@
-#- if : $CI_SERVER_HOST == "gitlab.com" && ($CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH == "ppa_upload")  && $CI_PIPELINE_SOURCE != "schedule"
-
-################################# Analysis ####################################################################################################################################################################################
-
-
-analysis-git-submodules:
-  extends: .tags-linux
-  rules:
-    - if: $CI_COMMIT_BRANCH == "ppa_upload"
-      when: never
-    - if: $CI_PIPELINE_SOURCE == "schedule"
-      when: never
-    - when: always
-  image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_git:v2.25.1
-  stage: analysis
-  variables:
-    GIT_SUBMODULE_STRATEGY: recursive
-  script:
-    - source ./ci/tools/git-branch.sh
-    - ./ci/deploy/analysis-git-submodule.sh
-
-
-################################# Deploy ####################################################################################################################################################################################
-
-#### Deploy Gitlab.com
+########################
+## deploy gitlab jobs ##
+########################
 
 .deploy-gitlab-com:
   tags:
