@@ -38,6 +38,7 @@ class Simulation : public Launcher
     int debug_precision = 2;
     int debug_frame_max = 0;
     int n_frames = 1;
+
 #ifdef AFF3CT_MPI
     int mpi_rank = 0;
     int mpi_size = 1;

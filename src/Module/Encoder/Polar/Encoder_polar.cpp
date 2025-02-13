@@ -44,7 +44,7 @@ Encoder_polar<B>::clone() const
 
 template<typename B>
 void
-Encoder_polar<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_polar<B>::_encode(const B* U_K, B* X_N, const size_t /*frame_id*/)
 {
     this->convert(U_K, X_N);
     this->light_encode(X_N);

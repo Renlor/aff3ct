@@ -174,7 +174,7 @@ Monitor_BFER<B>::check_errors(const B* U, const B* V, const int frame_id, const 
 
 template<typename B>
 int
-Monitor_BFER<B>::_check_errors(const B* U, const B* V, const size_t frame_id)
+Monitor_BFER<B>::_check_errors(const B* U, const B* V, const size_t /*frame_id*/)
 {
     int n_be_total = 0;
     for (size_t f = 0; f < this->get_n_frames(); f++)
@@ -220,7 +220,7 @@ Monitor_BFER<B>::_check_errors2(const B* U,
                                 int32_t* FE,
                                 float* BER,
                                 float* FER,
-                                const size_t frame_id)
+                                const size_t /*frame_id*/)
 {
     int n_be_total = 0;
     for (size_t f = 0; f < this->get_n_frames(); f++)

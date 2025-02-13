@@ -164,7 +164,7 @@ Interleaver_core<T>::refresh()
 
 template<typename T>
 void
-Interleaver_core<T>::set_seed(const int seed)
+Interleaver_core<T>::set_seed(const int /*seed*/)
 {
     // do nothing in the general case, this method has to be overrided
 }

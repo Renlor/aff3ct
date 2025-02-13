@@ -48,7 +48,7 @@ format(unsigned long long val)
 
 template<typename B>
 typename Reporter_BFER<B>::report_t
-Reporter_BFER<B>::report(bool final)
+Reporter_BFER<B>::report(bool /*final*/)
 {
     assert(this->cols_groups.size() == 1);
 

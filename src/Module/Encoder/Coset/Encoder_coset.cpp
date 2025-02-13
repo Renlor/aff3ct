@@ -29,7 +29,7 @@ Encoder_coset<B>::clone() const
 
 template<typename B>
 void
-Encoder_coset<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_coset<B>::_encode(const B* U_K, B* X_N, const size_t /*frame_id*/)
 {
     std::copy(U_K, U_K + this->K, X_N);
 

@@ -53,15 +53,15 @@ Decoder_RSC_BCJR_inter_fast<B, R, MAX>::compute_gamma(const R* sys, const R* par
 template<typename R>
 struct RSC_BCJR_inter_fast_normalize
 {
-    static void apply(mipp::Reg<R>& r_ab0,
-                      mipp::Reg<R>& r_ab1,
-                      mipp::Reg<R>& r_ab2,
-                      mipp::Reg<R>& r_ab3,
-                      mipp::Reg<R>& r_ab4,
-                      mipp::Reg<R>& r_ab5,
-                      mipp::Reg<R>& r_ab6,
-                      mipp::Reg<R>& r_ab7,
-                      const int& i)
+    static void apply(mipp::Reg<R>& /*r_ab0*/,
+                      mipp::Reg<R>& /*r_ab1*/,
+                      mipp::Reg<R>& /*r_ab2*/,
+                      mipp::Reg<R>& /*r_ab3*/,
+                      mipp::Reg<R>& /*r_ab4*/,
+                      mipp::Reg<R>& /*r_ab5*/,
+                      mipp::Reg<R>& /*r_ab6*/,
+                      mipp::Reg<R>& /*r_ab7*/,
+                      const int& /*i*/)
     {
         // no need to normalize
     }
@@ -109,7 +109,7 @@ struct RSC_BCJR_inter_fast_normalize<signed char>
                       mipp::Reg<signed char>& r_ab5,
                       mipp::Reg<signed char>& r_ab6,
                       mipp::Reg<signed char>& r_ab7,
-                      const int& i)
+                      const int& /*i*/)
     {
         // normalization
         const auto r_norm_val = r_ab0;
@@ -285,7 +285,7 @@ Decoder_RSC_BCJR_inter_fast<B, R, MAX>::compute_ext(const R* sys, R* ext)
 
 template<typename B, typename R, tools::proto_max_i<R> MAX>
 int
-Decoder_RSC_BCJR_inter_fast<B, R, MAX>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t frame_id)
+Decoder_RSC_BCJR_inter_fast<B, R, MAX>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t /*frame_id*/)
 {
     if (!mipp::isAligned(sys))
         throw spu::tools::runtime_error(__FILE__, __LINE__, __func__, "'sys' is misaligned memory.");

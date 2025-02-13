@@ -109,7 +109,7 @@ Channel<R>::get_noised_data() const
 
 template<typename R>
 void
-Channel<R>::set_seed(const int seed)
+Channel<R>::set_seed(const int /*seed*/)
 {
     // do nothing in the general case, this method has to be overrided
 }
@@ -169,14 +169,14 @@ Channel<R>::add_noise_wg(const float* CP, const R* X_N, R* H_N, R* Y_N, const in
 
 template<typename R>
 void
-Channel<R>::_add_noise(const float* CP, const R* X_N, R* Y_N, const size_t frame_id)
+Channel<R>::_add_noise(const float* /*CP*/, const R* /*X_N*/, R* /*Y_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename R>
 void
-Channel<R>::_add_noise_wg(const float* CP, const R* X_N, R* H_N, R* Y_N, const size_t frame_id)
+Channel<R>::_add_noise_wg(const float* /*CP*/, const R* /*X_N*/, R* /*H_N*/, R* /*Y_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

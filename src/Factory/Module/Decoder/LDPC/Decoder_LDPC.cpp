@@ -205,7 +205,7 @@ template<typename B, typename Q>
 module::Decoder_SISO<B, Q>*
 Decoder_LDPC ::build_siso(const tools::Sparse_matrix& H,
                           const std::vector<unsigned>& info_bits_pos,
-                          module::Encoder<B>* encoder) const
+                          module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "BP_FLOODING" && this->simd_strategy.empty())
     {

@@ -68,7 +68,7 @@ Flip_and_check ::store(const cli::Argument_map_value& vals)
 }
 
 void
-Flip_and_check ::get_headers(std::map<std::string, tools::header_list>& headers, const bool full) const
+Flip_and_check ::get_headers(std::map<std::string, tools::header_list>& headers, const bool /*full*/) const
 {
     auto p = this->get_prefix();
 

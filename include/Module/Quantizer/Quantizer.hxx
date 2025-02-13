@@ -91,7 +91,7 @@ Quantizer<R, Q>::process(const R* Y_N1, Q* Y_N2, const int frame_id, const bool 
 
 template<typename R, typename Q>
 void
-Quantizer<R, Q>::_process(const R* Y_N1, Q* Y_N2, const size_t frame_id)
+Quantizer<R, Q>::_process(const R* /*Y_N1*/, Q* /*Y_N2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

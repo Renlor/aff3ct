@@ -134,7 +134,7 @@ Decoder_RSC_DB_BCJR_DVB_RCS2<B, R, MAX>::__fwd_recursion(const R* sys, const R* 
 
 template<typename B, typename R, tools::proto_max<R> MAX>
 void
-Decoder_RSC_DB_BCJR_DVB_RCS2<B, R, MAX>::__bwd_recursion(const R* sys, const R* par, R* ext)
+Decoder_RSC_DB_BCJR_DVB_RCS2<B, R, MAX>::__bwd_recursion(const R* sys, const R* /*par*/, R* ext)
 {
     for (auto k = this->K / 2 - 1; k >= 0; k--)
     {

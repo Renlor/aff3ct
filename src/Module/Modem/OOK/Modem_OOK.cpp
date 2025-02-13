@@ -28,7 +28,7 @@ Modem_OOK<B, R, Q>::clone() const
 
 template<typename B, typename R, typename Q>
 void
-Modem_OOK<B, R, Q>::_modulate(const B* X_N1, R* X_N2, const size_t frame_id)
+Modem_OOK<B, R, Q>::_modulate(const B* X_N1, R* X_N2, const size_t /*frame_id*/)
 {
     for (auto i = 0; i < this->N_fil; i++)
         X_N2[i] = X_N1[i] ? (R)1 : (R)0;
@@ -40,7 +40,7 @@ namespace module
 {
 template<>
 void
-Modem_OOK<int, float, float>::_modulate(const int* X_N1, float* X_N2, const size_t frame_id)
+Modem_OOK<int, float, float>::_modulate(const int* X_N1, float* X_N2, const size_t /*frame_id*/)
 {
     using B = int;
     using R = float;
@@ -67,7 +67,7 @@ Modem_OOK<int, float, float>::_modulate(const int* X_N1, float* X_N2, const size
 
 template<typename B, typename R, typename Q>
 void
-Modem_OOK<B, R, Q>::_filter(const float* CP, const R* Y_N1, R* Y_N2, const size_t frame_id)
+Modem_OOK<B, R, Q>::_filter(const float* /*CP*/, const R* Y_N1, R* Y_N2, const size_t /*frame_id*/)
 {
     std::copy(Y_N1, Y_N1 + this->N_fil, Y_N2);
 }

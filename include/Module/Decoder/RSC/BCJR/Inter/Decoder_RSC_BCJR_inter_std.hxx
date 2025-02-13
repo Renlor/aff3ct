@@ -56,7 +56,7 @@ Decoder_RSC_BCJR_inter_std<B, R, MAX>::compute_gamma(const R* sys, const R* par)
 template<typename R>
 struct RSC_BCJR_inter_std_normalize
 {
-    static void apply(mipp::vector<R> metrics[8], const int& i)
+    static void apply(mipp::vector<R> /*metrics*/[8], const int& /*i*/)
     {
         // no need to do something
     }
@@ -200,7 +200,7 @@ Decoder_RSC_BCJR_inter_std<B, R, MAX>::compute_ext(const R* sys, R* ext)
 
 template<typename B, typename R, tools::proto_max_i<R> MAX>
 int
-Decoder_RSC_BCJR_inter_std<B, R, MAX>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t frame_id)
+Decoder_RSC_BCJR_inter_std<B, R, MAX>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t /*frame_id*/)
 {
     if (!mipp::isAligned(sys))
         throw spu::tools::runtime_error(__FILE__, __LINE__, __func__, "'sys' is misaligned memory.");

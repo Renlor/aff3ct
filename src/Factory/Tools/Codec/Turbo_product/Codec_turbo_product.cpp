@@ -105,7 +105,7 @@ Codec_turbo_product ::get_headers(std::map<std::string, tools::header_list>& hea
 
 template<typename B, typename Q>
 tools::Codec_turbo_product<B, Q>*
-Codec_turbo_product ::build(const module::CRC<B>* crc) const
+Codec_turbo_product ::build(const module::CRC<B>* /*crc*/) const
 {
     return new tools::Codec_turbo_product<B, Q>(
       dynamic_cast<const Encoder_turbo_product&>(*enc), dynamic_cast<const Decoder_turbo_product&>(*dec), *itl);

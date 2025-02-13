@@ -255,7 +255,7 @@ Decoder_Viterbi_SIHO<B, R>::_backwards_pass(B* V_K)
 
 template<typename B, typename R>
 int
-Decoder_Viterbi_SIHO<B, R>::_decode_siho(const R* Y_N, B* V_K, const size_t frame_id)
+Decoder_Viterbi_SIHO<B, R>::_decode_siho(const R* Y_N, B* V_K, const size_t /*frame_id*/)
 {
     __reset();
     _forward_pass(Y_N);

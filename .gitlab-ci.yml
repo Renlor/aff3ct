@@ -3,7 +3,6 @@ variables:
   GIT_SUBMODULE_STRATEGY: none
 
 
-
 ###### CI environment
 
 workflow:

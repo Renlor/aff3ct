@@ -47,7 +47,7 @@ Update_rule_MS<R>::begin_ite(const int ite)
 
 template<typename R>
 inline void
-Update_rule_MS<R>::begin_chk_node_in(const int chk_id, const int chk_degree)
+Update_rule_MS<R>::begin_chk_node_in(const int /*chk_id*/, const int /*chk_degree*/)
 {
     this->sign = 0;
     this->min1 = std::numeric_limits<R>::max();
@@ -56,7 +56,7 @@ Update_rule_MS<R>::begin_chk_node_in(const int chk_id, const int chk_degree)
 
 template<typename R>
 inline void
-Update_rule_MS<R>::compute_chk_node_in(const int var_id, const R var_val)
+Update_rule_MS<R>::compute_chk_node_in(const int /*var_id*/, const R var_val)
 {
     const auto var_abs = (R)std::abs(var_val);
     const auto var_sign = std::signbit((float)var_val) ? -1 : 0;
@@ -76,13 +76,13 @@ Update_rule_MS<R>::end_chk_node_in()
 
 template<typename R>
 inline void
-Update_rule_MS<R>::begin_chk_node_out(const int chk_id, const int chk_degree)
+Update_rule_MS<R>::begin_chk_node_out(const int /*chk_id*/, const int /*chk_degree*/)
 {
 }
 
 template<typename R>
 inline R
-Update_rule_MS<R>::compute_chk_node_out(const int var_id, const R var_val)
+Update_rule_MS<R>::compute_chk_node_out(const int /*var_id*/, const R var_val)
 {
     const auto var_abs = (R)std::abs(var_val);
     const auto res_abs = ((var_abs == this->min1) ? this->cst1 : this->cst2);

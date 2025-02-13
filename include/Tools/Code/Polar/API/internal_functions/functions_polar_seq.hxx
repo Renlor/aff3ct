@@ -17,7 +17,7 @@ namespace tools
 
 template<typename R, proto_f<R> F, int N_ELMTS>
 void
-f_seq<R, F, N_ELMTS>::apply(const R* __restrict l_a, const R* __restrict l_b, R* __restrict l_c, const int n_elmts)
+f_seq<R, F, N_ELMTS>::apply(const R* __restrict l_a, const R* __restrict l_b, R* __restrict l_c, const int /*n_elmts*/)
 {
     for (auto i = 0; i < N_ELMTS; i++)
         l_c[i] = F(l_a[i], l_b[i]);
@@ -41,7 +41,7 @@ g_seq<B, R, G, N_ELMTS>::apply(const R* __restrict l_a,
                                const R* __restrict l_b,
                                const B* __restrict s_a,
                                R* __restrict l_c,
-                               const int n_elmts)
+                               const int /*n_elmts*/)
 {
     for (auto i = 0; i < N_ELMTS; i++)
         l_c[i] = G(l_a[i], l_b[i], s_a[i]);
@@ -65,7 +65,10 @@ g_seq<B, R, G, 0>::apply(const R* __restrict l_a,
 
 template<typename R, proto_g0<R> G0, int N_ELMTS>
 void
-g0_seq<R, G0, N_ELMTS>::apply(const R* __restrict l_a, const R* __restrict l_b, R* __restrict l_c, const int n_elmts)
+g0_seq<R, G0, N_ELMTS>::apply(const R* __restrict l_a,
+                              const R* __restrict l_b,
+                              R* __restrict l_c,
+                              const int /*n_elmts*/)
 {
     for (auto i = 0; i < N_ELMTS; i++)
         l_c[i] = G0(l_a[i], l_b[i]);
@@ -89,7 +92,7 @@ gr_seq<B, R, G, N_ELMTS>::apply(const R* __restrict l_a,
                                 const R* __restrict l_b,
                                 const B* __restrict s_a,
                                 R* __restrict l_c,
-                                const int n_elmts)
+                                const int /*n_elmts*/)
 {
     const auto u = s_a[0];
     for (auto i = 0; i < N_ELMTS; i++)
@@ -115,7 +118,7 @@ gr_seq<B, R, G, 0>::apply(const R* __restrict l_a,
 
 template<typename B, typename R, proto_h<B, R> H, int N_ELMTS>
 void
-h_seq<B, R, H, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+h_seq<B, R, H, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     for (auto i = 0; i < N_ELMTS; i++)
         s_a[i] = H(l_a[i]);
@@ -135,7 +138,7 @@ h_seq<B, R, H, 0>::apply(const R* __restrict l_a, B* __restrict s_a, const int n
 
 template<typename B, int N_ELMTS>
 void
-h0_seq<B, N_ELMTS>::apply(B* __restrict s_a, const int n_elmts)
+h0_seq<B, N_ELMTS>::apply(B* __restrict s_a, const int /*n_elmts*/)
 {
     std::fill(s_a, s_a + N_ELMTS, 0);
 }
@@ -153,7 +156,7 @@ h0_seq<B, 0>::apply(B* __restrict s_a, const int n_elmts)
 
 template<typename B, typename R, proto_h<B, R> H, int N_ELMTS>
 void
-rep_seq<B, R, H, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+rep_seq<B, R, H, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     R sum_l = (R)0;
     for (auto i = 0; i < N_ELMTS; i++)
@@ -166,7 +169,7 @@ rep_seq<B, R, H, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, con
 
 template<typename B, proto_h<B, signed char> H, int N_ELMTS>
 void
-rep_seq<B, signed char, H, N_ELMTS>::apply(const signed char* __restrict l_a, B* __restrict s_a, const int n_elmts)
+rep_seq<B, signed char, H, N_ELMTS>::apply(const signed char* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     int sum_l = 0; // accumulate in a integer instead of a char
     for (auto i = 0; i < N_ELMTS; i++)
@@ -211,7 +214,7 @@ rep_seq<B, signed char, H, 0>::apply(const signed char* __restrict l_a, B* __res
 
 template<typename B, typename R, proto_h<B, R> H, int N_ELMTS>
 bool
-spc_seq<B, R, H, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+spc_seq<B, R, H, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*_elmts*/)
 {
     auto cur_min_abs = std::numeric_limits<R>::max();
     auto cur_min_pos = -1;
@@ -269,7 +272,7 @@ spc_seq<B, R, H, 0>::apply(const R* __restrict l_a, B* __restrict s_a, const int
 
 template<typename B, proto_xo<B> X, int N_ELMTS>
 void
-xo_seq<B, X, N_ELMTS>::apply(const B* __restrict s_a, const B* __restrict s_b, B* __restrict s_c, const int n_elmts)
+xo_seq<B, X, N_ELMTS>::apply(const B* __restrict s_a, const B* __restrict s_b, B* __restrict s_c, const int /*n_elmts*/)
 {
     for (auto i = 0; i < N_ELMTS; i += 1)
         s_c[i] = X(s_a[i], s_b[i]);
@@ -289,7 +292,7 @@ xo_seq<B, X, 0>::apply(const B* __restrict s_a, const B* __restrict s_b, B* __re
 
 template<typename B, int N_ELMTS>
 void
-xo0_seq<B, N_ELMTS>::apply(const B* __restrict s_b, B* __restrict s_c, const int n_elmts)
+xo0_seq<B, N_ELMTS>::apply(const B* __restrict s_b, B* __restrict s_c, const int /*n_elmts*/)
 {
 #ifdef _MSC_VER
     std::copy(s_b, s_b + N_ELMTS, stdext::checked_array_iterator<B*>(s_c, N_ELMTS));

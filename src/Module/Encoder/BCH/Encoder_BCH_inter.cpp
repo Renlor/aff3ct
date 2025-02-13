@@ -69,7 +69,7 @@ Encoder_BCH_inter<B>::__encode(const B* U_K, B* par)
 
 template<typename B>
 void
-Encoder_BCH_inter<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_BCH_inter<B>::_encode(const B* U_K, B* X_N, const size_t /*frame_id*/)
 {
     // generate the parity bits
     this->__encode(U_K, X_N);

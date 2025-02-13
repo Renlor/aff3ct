@@ -85,7 +85,7 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_custom<float, float>::Quantizer_custom(const int N, const short& saturation_pos)
+Quantizer_custom<float, float>::Quantizer_custom(const int N, const short& /*saturation_pos*/)
   : Quantizer<float, float>(N)
   , val_max(0)
   , val_min(0)
@@ -104,7 +104,7 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_custom<double, double>::Quantizer_custom(const int N, const short& saturation_pos)
+Quantizer_custom<double, double>::Quantizer_custom(const int N, const short& /*saturation_pos*/)
   : Quantizer<double, double>(N)
   , val_max(0)
   , val_min(0)
@@ -136,7 +136,7 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_custom<float, float>::Quantizer_custom(const int N, const float min_max)
+Quantizer_custom<float, float>::Quantizer_custom(const int N, const float /*min_max*/)
   : Quantizer<float, float>(N)
   , val_max(0)
   , val_min(0)
@@ -155,7 +155,7 @@ namespace aff3ct
 namespace module
 {
 template<>
-Quantizer_custom<double, double>::Quantizer_custom(const int N, const float min_max)
+Quantizer_custom<double, double>::Quantizer_custom(const int N, const float /*min_max*/)
   : Quantizer<double, double>(N)
   , val_max(0)
   , val_min(0)
@@ -201,7 +201,7 @@ Quantizer_custom<R, Q>::clone() const
 
 template<typename R, typename Q>
 void
-Quantizer_custom<R, Q>::_process(const R* Y_N1, Q* Y_N2, const size_t frame_id)
+Quantizer_custom<R, Q>::_process(const R* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     const auto size = (unsigned)(this->N);
 

@@ -31,7 +31,10 @@ Self_corrected<B, R>::clone() const
 
 template<typename B, typename R>
 bool
-Self_corrected<B, R>::siso_n(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext, mipp::vector<B>& s)
+Self_corrected<B, R>::siso_n(const int ite,
+                             const mipp::vector<R>& /*sys*/,
+                             mipp::vector<R>& ext,
+                             mipp::vector<B>& /*s*/)
 {
     if (ite <= M)
     {
@@ -48,7 +51,7 @@ Self_corrected<B, R>::siso_n(const int ite, const mipp::vector<R>& sys, mipp::ve
 
 template<typename B, typename R>
 bool
-Self_corrected<B, R>::siso_i(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext)
+Self_corrected<B, R>::siso_i(const int ite, const mipp::vector<R>& /*sys*/, mipp::vector<R>& ext)
 {
     if (ite <= M)
     {

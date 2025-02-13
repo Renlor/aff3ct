@@ -19,7 +19,10 @@ namespace tools
 
 template<typename R, proto_f_i<R> FI>
 void
-f_intra_unaligned<R, FI>::apply(const R* __restrict l_a, const R* __restrict l_b, R* __restrict l_c, const int n_elmts)
+f_intra_unaligned<R, FI>::apply(const R* __restrict l_a,
+                                const R* __restrict l_b,
+                                R* __restrict l_c,
+                                const int /*n_elmts*/)
 {
     const auto r_lambda_a = mipp::loadu<R>(l_a);
     const auto r_lambda_b = mipp::loadu<R>(l_b);
@@ -37,7 +40,7 @@ g_intra_unaligned<B, R, GI>::apply(const R* __restrict l_a,
                                    const R* __restrict l_b,
                                    const B* __restrict s_a,
                                    R* __restrict l_c,
-                                   const int n_elmts)
+                                   const int /*n_elmts*/)
 {
     const auto r_sat = API_polar_inter_intra_saturate<R>::init();
 
@@ -58,7 +61,7 @@ void
 g0_intra_unaligned<R, G0I, N_ELMTS>::apply(const R* __restrict l_a,
                                            const R* __restrict l_b,
                                            R* __restrict l_c,
-                                           const int n_elmts)
+                                           const int /*n_elmts*/)
 {
     const auto r_sat = API_polar_inter_intra_saturate<R>::init();
 
@@ -79,7 +82,7 @@ gr_intra_unaligned<B, R, GI>::apply(const R* __restrict l_a,
                                     const R* __restrict l_b,
                                     const B* __restrict s_a,
                                     R* __restrict l_c,
-                                    const int n_elmts)
+                                    const int /*n_elmts*/)
 {
     const auto r_sat = API_polar_inter_intra_saturate<R>::init();
 
@@ -97,7 +100,7 @@ gr_intra_unaligned<B, R, GI>::apply(const R* __restrict l_a,
 
 template<typename B, typename R, proto_h_i<B, R> HI>
 void
-h_intra_unaligned<B, R, HI>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+h_intra_unaligned<B, R, HI>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     const auto r_lambda_a = mipp::loadu<R>(l_a);
     const auto r_u = HI(r_lambda_a);
@@ -110,7 +113,7 @@ h_intra_unaligned<B, R, HI>::apply(const R* __restrict l_a, B* __restrict s_a, c
 
 template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS>
 void
-rep_intra<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+rep_intra<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
 
@@ -156,7 +159,7 @@ rep_intra<B, R, HI, 0>::apply(const R* __restrict l_a, B* __restrict s_a, const 
 
 template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS>
 bool
-spc_intra<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+spc_intra<B, R, HI, N_ELMTS>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
 

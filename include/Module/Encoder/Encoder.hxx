@@ -201,7 +201,7 @@ Encoder<B>::is_codeword(const std::vector<B, A>& X_N)
 
 template<typename B>
 bool
-Encoder<B>::is_codeword(const B* X_N)
+Encoder<B>::is_codeword(const B* /*X_N*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -222,7 +222,7 @@ Encoder<B>::tail_length() const
 
 template<typename B>
 void
-Encoder<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder<B>::_encode(const B* /*U_K*/, B* /*X_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -236,7 +236,7 @@ Encoder<B>::set_sys(const bool sys)
 
 template<typename B>
 void
-Encoder<B>::set_seed(const int seed)
+Encoder<B>::set_seed(const int /*seed*/)
 {
     // do nothing in the general case, this method has to be overrided
 }

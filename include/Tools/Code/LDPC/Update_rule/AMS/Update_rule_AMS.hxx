@@ -46,7 +46,7 @@ Update_rule_AMS<R, MIN>::begin_ite(const int ite)
 
 template<typename R, proto_min<R> MIN>
 void
-Update_rule_AMS<R, MIN>::begin_chk_node_in(const int chk_id, const int chk_degree)
+Update_rule_AMS<R, MIN>::begin_chk_node_in(const int /*chk_id*/, const int /*chk_degree*/)
 {
     this->sign = 0;
     this->min = std::numeric_limits<R>::max();
@@ -55,7 +55,7 @@ Update_rule_AMS<R, MIN>::begin_chk_node_in(const int chk_id, const int chk_degre
 
 template<typename R, proto_min<R> MIN>
 void
-Update_rule_AMS<R, MIN>::compute_chk_node_in(const int var_id, const R var_val)
+Update_rule_AMS<R, MIN>::compute_chk_node_in(const int /*var_id*/, const R var_val)
 {
     const auto var_abs = (R)std::abs(var_val);
     const auto var_sgn = std::signbit((float)var_val) ? -1 : 0;
@@ -76,13 +76,13 @@ Update_rule_AMS<R, MIN>::end_chk_node_in()
 
 template<typename R, proto_min<R> MIN>
 void
-Update_rule_AMS<R, MIN>::begin_chk_node_out(const int chk_id, const int chk_degree)
+Update_rule_AMS<R, MIN>::begin_chk_node_out(const int /*chk_id*/, const int /*chk_degree*/)
 {
 }
 
 template<typename R, proto_min<R> MIN>
 R
-Update_rule_AMS<R, MIN>::compute_chk_node_out(const int var_id, const R var_val)
+Update_rule_AMS<R, MIN>::compute_chk_node_out(const int /*var_id*/, const R var_val)
 {
     const auto var_abs = (R)std::abs(var_val);
     auto res_abs = ((var_abs == this->min) ? this->delta_min : this->delta);

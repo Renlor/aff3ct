@@ -130,7 +130,7 @@ Modem_CPM<B, R, Q, MAX>::size_fil(const int N, const int bps, const int L, const
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_CPM<B, R, Q, MAX>::_modulate(const B* X_N1, R* X_N2, const size_t frame_id)
+Modem_CPM<B, R, Q, MAX>::_modulate(const B* X_N1, R* X_N2, const size_t /*frame_id*/)
 {
     // mapper
     std::vector<SIN> mapped_frame(n_sy);
@@ -158,7 +158,7 @@ Modem_CPM<B, R, Q, MAX>::_modulate(const B* X_N1, R* X_N2, const size_t frame_id
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_CPM<B, R, Q, MAX>::_filter(const float* CP, const R* Y_N1, R* Y_N2, const size_t frame_id)
+Modem_CPM<B, R, Q, MAX>::_filter(const float* CP, const R* Y_N1, R* Y_N2, const size_t /*frame_id*/)
 {
     if (*CP != this->last_channel_param && !no_sig2) this->generate_projection((R)1 / ((R)*CP * (R)*CP));
 
@@ -181,14 +181,18 @@ Modem_CPM<B, R, Q, MAX>::_filter(const float* CP, const R* Y_N1, R* Y_N2, const 
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_CPM<B, R, Q, MAX>::_demodulate(const float* CP, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_CPM<B, R, Q, MAX>::_demodulate(const float* /*CP*/, const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     bcjr.decode(Y_N1, Y_N2);
 }
 
 template<typename B, typename R, typename Q, tools::proto_max<Q> MAX>
 void
-Modem_CPM<B, R, Q, MAX>::_tdemodulate(const float* CP, const Q* Y_N1, const Q* Y_N2, Q* Y_N3, const size_t frame_id)
+Modem_CPM<B, R, Q, MAX>::_tdemodulate(const float* /*CP*/,
+                                      const Q* Y_N1,
+                                      const Q* Y_N2,
+                                      Q* Y_N3,
+                                      const size_t /*frame_id*/)
 {
     bcjr.decode(Y_N1, Y_N2, Y_N3);
 }

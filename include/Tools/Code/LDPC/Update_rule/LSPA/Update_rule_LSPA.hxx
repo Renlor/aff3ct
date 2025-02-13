@@ -61,7 +61,7 @@ Update_rule_LSPA<R>::begin_ite(const int ite)
 
 template<typename R>
 inline void
-Update_rule_LSPA<R>::begin_chk_node_in(const int chk_id, const int chk_degree)
+Update_rule_LSPA<R>::begin_chk_node_in(const int /*chk_id*/, const int chk_degree)
 {
     assert(chk_degree <= (int)values.size());
 
@@ -91,7 +91,7 @@ Update_rule_LSPA<R>::end_chk_node_in()
 
 template<typename R>
 inline void
-Update_rule_LSPA<R>::begin_chk_node_out(const int chk_id, const int chk_degree)
+Update_rule_LSPA<R>::begin_chk_node_out(const int /*chk_id*/, const int /*chk_degree*/)
 {
 }
 

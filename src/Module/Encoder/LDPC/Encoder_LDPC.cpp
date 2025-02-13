@@ -103,7 +103,7 @@ Encoder_LDPC<B>::_check_H_dimensions()
 
 template<typename B>
 void
-Encoder_LDPC<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_LDPC<B>::_encode(const B* U_K, B* X_N, const size_t /*frame_id*/)
 {
     for (auto i = 0; i < this->N; i++)
     {

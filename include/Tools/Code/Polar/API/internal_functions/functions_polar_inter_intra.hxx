@@ -22,7 +22,7 @@ API_polar_inter_intra_saturate<T>::init()
 
 template<typename T>
 mipp::reg
-API_polar_inter_intra_saturate<T>::perform(const mipp::reg r_lambda, const mipp::reg r_sat)
+API_polar_inter_intra_saturate<T>::perform(const mipp::reg r_lambda, const mipp::reg /*r_sat*/)
 {
     return r_lambda;
 }
@@ -50,7 +50,7 @@ void
 f_inter_intra<R, FI, N_ELMTS, N_FRAMES>::apply(const R* __restrict l_a,
                                                const R* __restrict l_b,
                                                R* __restrict l_c,
-                                               const int n_elmts)
+                                               const int /*unused n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
@@ -93,7 +93,7 @@ g_inter_intra<B, R, GI, N_ELMTS, N_FRAMES>::apply(const R* __restrict l_a,
                                                   const R* __restrict l_b,
                                                   const B* __restrict s_a,
                                                   R* __restrict l_c,
-                                                  const int n_elmts)
+                                                  const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
@@ -144,7 +144,7 @@ void
 g0_inter_intra<R, G0I, N_ELMTS, N_FRAMES>::apply(const R* __restrict l_a,
                                                  const R* __restrict l_b,
                                                  R* __restrict l_c,
-                                                 const int n_elmts)
+                                                 const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
@@ -193,7 +193,7 @@ gr_inter_intra<B, R, GI, N_ELMTS, N_FRAMES>::apply(const R* __restrict l_a,
                                                    const R* __restrict l_b,
                                                    const B* __restrict s_a,
                                                    R* __restrict l_c,
-                                                   const int n_elmts)
+                                                   const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
@@ -241,7 +241,7 @@ gr_inter_intra<B, R, GI, 0, N_FRAMES>::apply(const R* __restrict l_a,
 
 template<typename B, typename R, proto_h_i<B, R> HI, int N_ELMTS, int N_FRAMES>
 void
-h_inter_intra<B, R, HI, N_ELMTS, N_FRAMES>::apply(const R* __restrict l_a, B* __restrict s_a, const int n_elmts)
+h_inter_intra<B, R, HI, N_ELMTS, N_FRAMES>::apply(const R* __restrict l_a, B* __restrict s_a, const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<R>();
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
@@ -273,7 +273,7 @@ h_inter_intra<B, R, HI, 0, N_FRAMES>::apply(const R* __restrict l_a, B* __restri
 
 template<typename B, int N_ELMTS, int N_FRAMES>
 void
-h0_inter_intra<B, N_ELMTS, N_FRAMES>::apply(B* __restrict s_a, const int n_elmts)
+h0_inter_intra<B, N_ELMTS, N_FRAMES>::apply(B* __restrict s_a, const int /*n_elmts*/)
 {
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
     std::fill(s_a, s_a + _n_elmts, 0);
@@ -296,7 +296,7 @@ void
 xo_inter_intra<B, XOI, N_ELMTS, N_FRAMES>::apply(const B* __restrict s_a,
                                                  const B* __restrict s_b,
                                                  B* __restrict s_c,
-                                                 const int n_elmts)
+                                                 const int /*n_elmts*/)
 {
     constexpr auto stride = mipp::nElmtsPerRegister<B>();
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
@@ -335,7 +335,7 @@ xo_inter_intra<B, XOI, 0, N_FRAMES>::apply(const B* __restrict s_a,
 
 template<typename B, int N_ELMTS, int N_FRAMES>
 void
-xo0_inter_intra<B, N_ELMTS, N_FRAMES>::apply(const B* __restrict s_b, B* __restrict s_c, const int n_elmts)
+xo0_inter_intra<B, N_ELMTS, N_FRAMES>::apply(const B* __restrict s_b, B* __restrict s_c, const int /*n_elmts*/)
 {
     constexpr auto _n_elmts = N_ELMTS * N_FRAMES;
 #ifdef _MSC_VER

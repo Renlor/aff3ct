@@ -91,7 +91,10 @@ User_pdf_noise_generator_fast<float>::get_random()
 
 template<typename R>
 void
-User_pdf_noise_generator_fast<R>::generate(const R* signal, R* draw, const unsigned length, const R noise_power)
+User_pdf_noise_generator_fast<R>::generate(const R* /*signal*/,
+                                           R* /*draw*/,
+                                           const unsigned /*length*/,
+                                           const R /*noise_power*/)
 {
     throw spu::tools::runtime_error(
       __FILE__, __LINE__, __func__, "The MT19937 random generator does not support this type.");
@@ -133,7 +136,7 @@ User_pdf_noise_generator_fast<float>::generate(const float* signal,
 
 template<typename R>
 void
-User_pdf_noise_generator_fast<R>::generate(R* draw, const unsigned length, const R noise_power)
+User_pdf_noise_generator_fast<R>::generate(R* /*draw*/, const unsigned /*length*/, const R /*noise_power*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

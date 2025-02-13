@@ -48,7 +48,7 @@ Decoder_LDPC_bit_flipping_OMWBF<B, R>::clone() const
 
 template<typename B, typename R>
 bool
-Decoder_LDPC_bit_flipping_OMWBF<B, R>::BF_process(const R* Y_N, std::vector<R>& V_to_C, std::vector<R>& C_to_V)
+Decoder_LDPC_bit_flipping_OMWBF<B, R>::BF_process(const R* Y_N, std::vector<R>& /*V_to_C*/, std::vector<R>& /*C_to_V*/)
 {
     bool syndrome = 0;
 

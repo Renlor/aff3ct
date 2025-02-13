@@ -29,7 +29,7 @@ Modem_OOK_BSC<B, R, Q>::clone() const
 
 template<typename B, typename R, typename Q>
 void
-Modem_OOK_BSC<B, R, Q>::_demodulate(const float* CP, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Modem_OOK_BSC<B, R, Q>::_demodulate(const float* CP, const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     if (*CP != this->last_channel_param)
     {

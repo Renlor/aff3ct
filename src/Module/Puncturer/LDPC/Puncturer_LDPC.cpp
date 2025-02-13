@@ -59,7 +59,7 @@ Puncturer_LDPC<B, Q>::clone() const
 
 template<typename B, typename Q>
 void
-Puncturer_LDPC<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t frame_id) const
+Puncturer_LDPC<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t /*frame_id*/) const
 {
     auto k = 0;
     for (auto i = 0; i < (int)pattern_bits.size(); i++)
@@ -72,7 +72,7 @@ Puncturer_LDPC<B, Q>::_puncture(const B* X_N1, B* X_N2, const size_t frame_id) c
 
 template<typename B, typename Q>
 void
-Puncturer_LDPC<B, Q>::_depuncture(const Q* Y_N1, Q* Y_N2, const size_t frame_id) const
+Puncturer_LDPC<B, Q>::_depuncture(const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/) const
 {
     auto k = 0;
     for (auto i = 0; i < (int)pattern_bits.size(); i++)

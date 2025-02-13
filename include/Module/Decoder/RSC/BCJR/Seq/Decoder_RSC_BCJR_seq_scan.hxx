@@ -87,7 +87,7 @@ struct RSC_BCJR_seq_scan_init<signed char>
 template<typename R>
 struct RSC_BCJR_seq_scan_normalize1
 {
-    static void apply(R metrics[8][8], const int i)
+    static void apply(R /*metrics*/[8][8], const int /*i*/)
     {
         // no need to normalize
     }
@@ -112,7 +112,7 @@ struct RSC_BCJR_seq_scan_normalize1<short>
 template<>
 struct RSC_BCJR_seq_scan_normalize1<signed char>
 {
-    static void apply(signed char metrics[8][8], const int i)
+    static void apply(signed char metrics[8][8], const int /*i*/)
     {
         // normalization & saturation
         const auto norm_val = metrics[0][0];
@@ -125,7 +125,15 @@ struct RSC_BCJR_seq_scan_normalize1<signed char>
 template<typename R>
 struct RSC_BCJR_seq_scan_normalize2
 {
-    static void apply(R& ab0, R& ab1, R& ab2, R& ab3, R& ab4, R& ab5, R& ab6, R& ab7, const int i)
+    static void apply(R& /*ab0*/,
+                      R& /*ab1*/,
+                      R& /*ab2*/,
+                      R& /*ab3*/,
+                      R& /*ab4*/,
+                      R& /*ab5*/,
+                      R& /*ab6*/,
+                      R& /*ab7*/,
+                      const int /*i*/)
     {
         // no need to normalize
     }
@@ -164,7 +172,7 @@ struct RSC_BCJR_seq_scan_normalize2<signed char>
                       signed char& ab5,
                       signed char& ab6,
                       signed char& ab7,
-                      const int i)
+                      const int /*i*/)
     {
         // normalization & saturation
         const auto norm_val = ab0;
@@ -498,7 +506,7 @@ Decoder_RSC_BCJR_seq_scan<B, R, RD>::compute_ext(const R* sys, R* ext)
 
 template<typename B, typename R, typename RD>
 int
-Decoder_RSC_BCJR_seq_scan<B, R, RD>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t frame_id)
+Decoder_RSC_BCJR_seq_scan<B, R, RD>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t /*frame_id*/)
 {
     this->compute_gamma(sys, par);
     this->compute_alpha();

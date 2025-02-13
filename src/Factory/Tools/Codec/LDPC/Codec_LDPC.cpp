@@ -122,7 +122,7 @@ Codec_LDPC ::get_headers(std::map<std::string, tools::header_list>& headers, con
 
 template<typename B, typename Q>
 tools::Codec_LDPC<B, Q>*
-Codec_LDPC ::build(const module::CRC<B>* crc) const
+Codec_LDPC ::build(const module::CRC<B>* /*crc*/) const
 {
     return new tools::Codec_LDPC<B, Q>(dynamic_cast<const Encoder_LDPC&>(*enc),
                                        dynamic_cast<const Decoder_LDPC&>(*dec),

@@ -103,7 +103,7 @@ Monitor_EXIT<B, R>::check_mutual_info(const B* bits,
 
 template<typename B, typename R>
 void
-Monitor_EXIT<B, R>::_check_mutual_info(const B* bits, const R* llrs_a, const R* llrs_e, const size_t frame_id)
+Monitor_EXIT<B, R>::_check_mutual_info(const B* bits, const R* llrs_a, const R* llrs_e, const size_t /*frame_id*/)
 {
     for (size_t f = 0; f < this->get_n_frames(); f++)
     {
@@ -120,7 +120,7 @@ Monitor_EXIT<B, R>::_check_mutual_info(const B* bits, const R* llrs_a, const R* 
 
 template<typename B, typename R>
 void
-Monitor_EXIT<B, R>::_check_mutual_info_avg(const B* bits, const R* llrs_a, const size_t frame_id)
+Monitor_EXIT<B, R>::_check_mutual_info_avg(const B* bits, const R* llrs_a, const size_t /*frame_id*/)
 {
     for (int j = 0; j < get_N(); j++)
     {
@@ -369,7 +369,7 @@ Monitor_EXIT<B, R>::collect(const Monitor& m, bool fully)
 
 template<typename B, typename R>
 void
-Monitor_EXIT<B, R>::collect(const Monitor_EXIT<B, R>& m, bool fully)
+Monitor_EXIT<B, R>::collect(const Monitor_EXIT<B, R>& m, bool /*fully*/)
 {
     collect(m.get_attributes());
 }
@@ -398,7 +398,7 @@ Monitor_EXIT<B, R>::copy(const Monitor& m, bool fully)
 
 template<typename B, typename R>
 void
-Monitor_EXIT<B, R>::copy(const Monitor_EXIT<B, R>& m, bool fully)
+Monitor_EXIT<B, R>::copy(const Monitor_EXIT<B, R>& m, bool /*fully*/)
 {
     copy(m.get_attributes());
 }

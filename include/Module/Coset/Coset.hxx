@@ -98,7 +98,7 @@ Coset<B, D>::apply(const B* ref, const D* in, D* out, const int frame_id, const 
 
 template<typename B, typename D>
 void
-Coset<B, D>::_apply(const B* ref, const D* in, D* out, const size_t frame_id)
+Coset<B, D>::_apply(const B* /*ref*/, const D* /*in*/, D* /*out*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

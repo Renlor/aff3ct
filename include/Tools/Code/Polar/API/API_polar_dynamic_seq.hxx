@@ -16,7 +16,7 @@ API_polar_dynamic_seq<B, R, F, G, G0, H, XO>::get_n_frames()
 template<typename B, typename R, proto_f<R> F, proto_g<B, R> G, proto_g0<R> G0, proto_h<B, R> H, proto_xo<B> XO>
 template<typename T>
 bool
-API_polar_dynamic_seq<B, R, F, G, G0, H, XO>::isAligned(const T* ptr)
+API_polar_dynamic_seq<B, R, F, G, G0, H, XO>::isAligned(const T* /*ptr*/)
 {
     return true;
 }

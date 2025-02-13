@@ -250,7 +250,7 @@ Extractor<B, Q>::add_sys_and_ext_llr(const Q* ext,
 
 template<typename B, typename Q>
 void
-Extractor<B, Q>::_get_sys_llr(const Q* Y_N, Q* Y_K, const size_t frame_id)
+Extractor<B, Q>::_get_sys_llr(const Q* Y_N, Q* Y_K, const size_t /*frame_id*/)
 {
     const auto& info_bits_pos = this->get_info_bits_pos();
     if (info_bits_pos.size() != (size_t)this->K)
@@ -267,7 +267,7 @@ Extractor<B, Q>::_get_sys_llr(const Q* Y_N, Q* Y_K, const size_t frame_id)
 
 template<typename B, typename Q>
 void
-Extractor<B, Q>::_get_sys_bit(const Q* Y_N, B* V_K, const size_t frame_id)
+Extractor<B, Q>::_get_sys_bit(const Q* Y_N, B* V_K, const size_t /*frame_id*/)
 {
     const auto& info_bits_pos = this->get_info_bits_pos();
     if (info_bits_pos.size() != (size_t)this->K)
@@ -284,7 +284,7 @@ Extractor<B, Q>::_get_sys_bit(const Q* Y_N, B* V_K, const size_t frame_id)
 
 template<typename B, typename Q>
 void
-Extractor<B, Q>::_get_sys_and_par_llr(const Q* Y_N, Q* sys, Q* par, const size_t frame_id)
+Extractor<B, Q>::_get_sys_and_par_llr(const Q* Y_N, Q* sys, Q* par, const size_t /*frame_id*/)
 {
     const auto& info_bits_pos = this->get_info_bits_pos();
     if (info_bits_pos.size() != (size_t)this->K)
@@ -312,7 +312,7 @@ Extractor<B, Q>::_get_sys_and_par_llr(const Q* Y_N, Q* sys, Q* par, const size_t
 
 template<typename B, typename Q>
 void
-Extractor<B, Q>::_add_sys_and_ext_llr(const Q* ext, const Q* Y_N1, Q* Y_N2, const size_t frame_id)
+Extractor<B, Q>::_add_sys_and_ext_llr(const Q* ext, const Q* Y_N1, Q* Y_N2, const size_t /*frame_id*/)
 {
     const auto& info_bits_pos = this->get_info_bits_pos();
     if (info_bits_pos.size() != (size_t)this->K)

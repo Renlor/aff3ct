@@ -71,7 +71,7 @@ Codec_uncoded ::get_headers(std::map<std::string, tools::header_list>& headers, 
 
 template<typename B, typename Q>
 tools::Codec_uncoded<B, Q>*
-Codec_uncoded ::build(const module::CRC<B>* crc) const
+Codec_uncoded ::build(const module::CRC<B>* /*crc*/) const
 {
     return new tools::Codec_uncoded<B, Q>(dynamic_cast<const Encoder_NO&>(*enc), dynamic_cast<const Decoder_NO&>(*dec));
 }

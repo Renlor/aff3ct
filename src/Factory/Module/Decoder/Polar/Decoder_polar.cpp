@@ -141,7 +141,7 @@ Decoder_polar ::get_headers(std::map<std::string, tools::header_list>& headers, 
 
 template<typename B, typename Q>
 module::Decoder_SISO<B, Q>*
-Decoder_polar ::build_siso(const std::vector<bool>& frozen_bits, module::Encoder<B>* encoder) const
+Decoder_polar ::build_siso(const std::vector<bool>& frozen_bits, module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "SCAN" && this->systematic)
     {
@@ -163,7 +163,7 @@ template<typename B, typename Q, class API_polar>
 module::Decoder_SIHO<B, Q>*
 Decoder_polar ::_build(const std::vector<bool>& frozen_bits,
                        const module::CRC<B>* crc,
-                       module::Encoder<B>* encoder) const
+                       module::Encoder<B>* /*encoder*/) const
 {
     if (!this->systematic) // non-systematic encoding
     {
@@ -241,7 +241,7 @@ template<typename B, typename Q, class API_polar>
 module::Decoder_SIHO<B, Q>*
 Decoder_polar ::_build_scl_fast(const std::vector<bool>& frozen_bits,
                                 const module::CRC<B>* crc,
-                                module::Encoder<B>* encoder) const
+                                module::Encoder<B>* /*encoder*/) const
 {
     int idx_r0, idx_r1;
     auto polar_patterns = tools::Nodes_parser<>::parse_ptr(this->polar_nodes, idx_r0, idx_r1);

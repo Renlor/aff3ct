@@ -94,7 +94,7 @@ Decoder_LDPC_BP_flooding_Gallager_A<B, R>::clone() const
 
 template<typename B, typename R>
 int
-Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_hiho(const B* Y_N, int8_t* CWD, B* V_K, const size_t frame_id)
+Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_hiho(const B* Y_N, int8_t* CWD, B* V_K, const size_t /*frame_id*/)
 {
     //	auto t_load = std::chrono::steady_clock::now();  // ----------------------------------------------------------
     // LOAD
@@ -128,7 +128,7 @@ Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_hiho(const B* Y_N, int8_t* CW
 
 template<typename B, typename R>
 int
-Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_hiho_cw(const B* Y_N, int8_t* CWD, B* V_N, const size_t frame_id)
+Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_hiho_cw(const B* Y_N, int8_t* CWD, B* V_N, const size_t /*frame_id*/)
 {
     //	auto t_load = std::chrono::steady_clock::now();  // ----------------------------------------------------------
     // LOAD
@@ -161,7 +161,7 @@ Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_hiho_cw(const B* Y_N, int8_t*
 
 template<typename B, typename R>
 int
-Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_siho(const R* Y_N, int8_t* CWD, B* V_K, const size_t frame_id)
+Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_siho(const R* Y_N, int8_t* CWD, B* V_K, const size_t /*frame_id*/)
 {
     //	auto t_load = std::chrono::steady_clock::now();  // ----------------------------------------------------------
     // LOAD
@@ -192,7 +192,7 @@ Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_siho(const R* Y_N, int8_t* CW
 
 template<typename B, typename R>
 int
-Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_siho_cw(const R* Y_N, int8_t* CWD, B* V_N, const size_t frame_id)
+Decoder_LDPC_BP_flooding_Gallager_A<B, R>::_decode_siho_cw(const R* Y_N, int8_t* CWD, B* V_N, const size_t /*frame_id*/)
 {
     //	auto t_load = std::chrono::steady_clock::now();  // ----------------------------------------------------------
     // LOAD

@@ -336,7 +336,7 @@ Decoder_LDPC_BP_horizontal_layered_ONMS_inter<B, R>::_decode(const size_t frame_
 // --------------------------------------------------------------------------------------------------------- saturation
 template<typename R>
 inline mipp::Reg<R>
-simd_sat(const mipp::Reg<R> val, const R saturation)
+simd_sat(const mipp::Reg<R> val, const R /*saturation*/)
 {
     return val;
 }
@@ -356,61 +356,61 @@ simd_normalize(const mipp::Reg<R> val, const float factor)
 }
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 1>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 1>(const mipp::Reg<short> v, const float /*f*/)
 {
     return (v >> 3);
 } // v * 0.125
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 2>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 2>(const mipp::Reg<short> v, const float /*f*/)
 {
     return (v >> 2);
 } // v * 0.250
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 3>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 3>(const mipp::Reg<short> v, const float /*f*/)
 {
     return (v >> 3) + (v >> 2);
 } // v * 0.375
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 4>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 4>(const mipp::Reg<short> v, const float /*f*/)
 {
     return (v >> 1);
 } // v * 0.500
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 5>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 5>(const mipp::Reg<short> v, const float /*f*/)
 {
     return (v >> 3) + (v >> 1);
 } // v * 0.625
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 6>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 6>(const mipp::Reg<short> v, const float /*f*/)
 {
     return (v >> 2) + (v >> 1);
 } // v * 0.750
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 7>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 7>(const mipp::Reg<short> v, const float /*f*/)
 {
     return (v >> 3) + (v >> 2) + (v >> 1);
 } // v * 0.825
 template<>
 inline mipp::Reg<short>
-simd_normalize<short, 8>(const mipp::Reg<short> v, const float f)
+simd_normalize<short, 8>(const mipp::Reg<short> v, const float /*f*/)
 {
     return v;
 } // v * 1.000
 template<>
 inline mipp::Reg<float>
-simd_normalize<float, 8>(const mipp::Reg<float> v, const float f)
+simd_normalize<float, 8>(const mipp::Reg<float> v, const float /*f*/)
 {
     return v;
 } // v * 1.000
 template<>
 inline mipp::Reg<double>
-simd_normalize<double, 8>(const mipp::Reg<double> v, const float f)
+simd_normalize<double, 8>(const mipp::Reg<double> v, const float /*f*/)
 {
     return v;
 } // v * 1.000

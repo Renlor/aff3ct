@@ -34,7 +34,7 @@ Source_random_fast<B>::clone() const
 
 template<typename B>
 void
-Source_random_fast<B>::_generate(B* U_K, const size_t frame_id)
+Source_random_fast<B>::_generate(B* U_K, const size_t /*frame_id*/)
 {
     if (!mipp::isAligned(U_K))
         throw spu::tools::runtime_error(__FILE__, __LINE__, __func__, "'U_K' is misaligned memory.");

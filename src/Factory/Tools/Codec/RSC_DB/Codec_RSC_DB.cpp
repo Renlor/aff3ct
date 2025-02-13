@@ -72,7 +72,7 @@ Codec_RSC_DB ::get_headers(std::map<std::string, tools::header_list>& headers, c
 
 template<typename B, typename Q>
 tools::Codec_RSC_DB<B, Q>*
-Codec_RSC_DB ::build(const module::CRC<B>* crc) const
+Codec_RSC_DB ::build(const module::CRC<B>* /*crc*/) const
 {
     return new tools::Codec_RSC_DB<B, Q>(dynamic_cast<const Encoder_RSC_DB&>(*enc),
                                          dynamic_cast<const Decoder_RSC_DB&>(*dec));

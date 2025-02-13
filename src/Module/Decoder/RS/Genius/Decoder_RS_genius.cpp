@@ -34,7 +34,7 @@ Decoder_RS_genius<B, R>::Decoder_RS_genius(const int K,
 
 template<typename B, typename R>
 int
-Decoder_RS_genius<B, R>::_decode(S* Y_N, const size_t frame_id)
+Decoder_RS_genius<B, R>::_decode(S* /*Y_N*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

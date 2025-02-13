@@ -34,7 +34,7 @@ Reporter_MI<B, R>::create_groups()
 
 template<typename B, typename R>
 typename Reporter_MI<B, R>::report_t
-Reporter_MI<B, R>::report(bool final)
+Reporter_MI<B, R>::report(bool /*final*/)
 {
     assert(this->cols_groups.size() == 1);
 

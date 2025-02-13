@@ -88,7 +88,7 @@ Decoder_RSC_BCJR_intra<B, R>::clone() const
 
 template<typename B, typename R>
 int
-Decoder_RSC_BCJR_intra<B, R>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t frame_id)
+Decoder_RSC_BCJR_intra<B, R>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t /*frame_id*/)
 {
     if (!mipp::isAligned(sys))
         throw spu::tools::runtime_error(__FILE__, __LINE__, __func__, "'sys' is misaligned memory.");
@@ -161,8 +161,9 @@ struct RSC_BCJR_intra_normalize_core
 template<typename R, int I = -1>
 struct RSC_BCJR_intra_normalize
 {
-    static mipp::Reg<R> apply(const mipp::Reg<R>& r_metrics, const mipp::Reg<R>& r_cmask_norm, const int& i = 0)
+    static mipp::Reg<R> apply(const mipp::Reg<R>& r_metrics, const mipp::Reg<R>& /*r_cmask_norm*/, const int& i = 0)
     {
+        (void)i;
         return r_metrics;
     }
 };
@@ -188,6 +189,7 @@ struct RSC_BCJR_intra_normalize<short, 3>
                                   const mipp::Reg<short>& r_cmask_norm,
                                   const int& i = 0)
     {
+        (void)i;
         return RSC_BCJR_intra_normalize_core<short>::apply(r_metrics, r_cmask_norm);
     }
 };

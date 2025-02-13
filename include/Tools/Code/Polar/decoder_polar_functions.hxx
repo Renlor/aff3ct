@@ -513,9 +513,9 @@ template<typename B, typename R, proto_xor<R> X, proto_plus<R> P>
 std::map<std::vector<std::vector<bool>>,
          std::vector<std::function<R(const std::vector<R>& LLRs, const std::vector<B>& bits)>>>
   Polar_lambdas<B, R, X, P>::functions = {
-      { { { 1 } }, { [](const std::vector<R>& L, const std::vector<B>& u) -> R { return L[0]; } } },
+      { { { 1 } }, { [](const std::vector<R>& L, const std::vector<B>& /*u*/) -> R { return L[0]; } } },
       { { { 1, 0 }, { 1, 1 } },
-        { [](const std::vector<R>& L, const std::vector<B>& u) -> R { return X(L[0], L[1]); },
+        { [](const std::vector<R>& L, const std::vector<B>& /*u*/) -> R { return X(L[0], L[1]); },
           [](const std::vector<R>& L, const std::vector<B>& u) -> R
           {
               auto hL0 = h(L[0], u, { 1 });
@@ -523,7 +523,7 @@ std::map<std::vector<std::vector<bool>>,
               return P(hL0, L[1]);
           } } },
       { { { 1, 1, 1 }, { 1, 0, 1 }, { 0, 1, 1 } },
-        { [](const std::vector<R>& L, const std::vector<B>& u) -> R { return X(X(L[0], L[1]), L[2]); },
+        { [](const std::vector<R>& L, const std::vector<B>& /*u*/) -> R { return X(X(L[0], L[1]), L[2]); },
           [](const std::vector<R>& L, const std::vector<B>& u) -> R
           {
               auto hL0 = h(L[0], u, { 1 });
@@ -538,7 +538,7 @@ std::map<std::vector<std::vector<bool>>,
               return P(hL1, hL2);
           } } },
       { { { 1, 0, 0 }, { 1, 1, 0 }, { 1, 0, 1 } },
-        { [](const std::vector<R>& L, const std::vector<B>& u) -> R { return X(X(L[0], L[1]), L[2]); },
+        { [](const std::vector<R>& L, const std::vector<B>& /*u*/) -> R { return X(X(L[0], L[1]), L[2]); },
           [](const std::vector<R>& L, const std::vector<B>& u) -> R
           {
               auto hL0 = h(L[0], u, { 1 });
@@ -552,7 +552,7 @@ std::map<std::vector<std::vector<bool>>,
               return P(hL0, L[2]);
           } } },
       { { { 1, 0, 0, 0 }, { 1, 1, 0, 0 }, { 1, 0, 1, 0 }, { 1, 1, 1, 1 } },
-        { [](const std::vector<R>& L, const std::vector<B>& u) -> R { return X(X(X(L[0], L[1]), L[2]), L[3]); },
+        { [](const std::vector<R>& L, const std::vector<B>& /*u*/) -> R { return X(X(X(L[0], L[1]), L[2]), L[3]); },
           [](const std::vector<R>& L, const std::vector<B>& u) -> R
           {
               auto hL0 = h(L[0], u, { 1 });
@@ -575,7 +575,7 @@ std::map<std::vector<std::vector<bool>>,
               return P(P(P(hL0, hL1), hL2), L[3]);
           } } },
       { { { 1, 0, 0, 0, 0 }, { 1, 1, 0, 0, 0 }, { 1, 0, 1, 0, 0 }, { 1, 0, 0, 1, 0 }, { 1, 1, 1, 0, 1 } },
-        { [](const std::vector<R>& L, const std::vector<B>& u) -> R
+        { [](const std::vector<R>& L, const std::vector<B>& /*u*/) -> R
           { return X(X(X(X(L[0], L[1]), L[2]), L[3]), L[4]); },
           [](const std::vector<R>& L, const std::vector<B>& u) -> R
           {
@@ -612,7 +612,7 @@ std::map<std::vector<std::vector<bool>>,
           { 1, 0, 0, 1, 0, 0 },
           { 1, 1, 1, 0, 1, 0 },
           { 1, 1, 0, 1, 0, 1 } },
-        { [](const std::vector<R>& L, const std::vector<B>& u) -> R
+        { [](const std::vector<R>& L, const std::vector<B>& /*u*/) -> R
           { return X(X(X(X(X(L[0], L[1]), L[2]), L[3]), L[4]), L[5]); },
           [](const std::vector<R>& L, const std::vector<B>& u) -> R
           {

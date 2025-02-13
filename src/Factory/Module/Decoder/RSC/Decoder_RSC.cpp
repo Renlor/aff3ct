@@ -144,7 +144,7 @@ module::Decoder_SISO<B, Q>*
 Decoder_RSC ::_build_siso_seq(const std::vector<std::vector<int>>& trellis,
                               std::ostream& stream,
                               const int n_ite,
-                              module::Encoder<B>* encoder) const
+                              module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "BCJR")
     {
@@ -168,7 +168,7 @@ Decoder_RSC ::_build_siso_seq(const std::vector<std::vector<int>>& trellis,
 
 template<typename B, typename Q, typename QD, tools::proto_max_i<Q> MAX>
 module::Decoder_SISO<B, Q>*
-Decoder_RSC ::_build_siso_simd(const std::vector<std::vector<int>>& trellis, module::Encoder<B>* encoder) const
+Decoder_RSC ::_build_siso_simd(const std::vector<std::vector<int>>& trellis, module::Encoder<B>* /*encoder*/) const
 {
     if (this->type == "BCJR" && this->simd_strategy == "INTER")
     {

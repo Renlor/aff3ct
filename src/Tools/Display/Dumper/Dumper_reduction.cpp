@@ -120,7 +120,7 @@ Dumper_reduction ::checks()
 }
 
 void
-Dumper_reduction ::add(const size_t frame_id)
+Dumper_reduction ::add(const size_t /*frame_id*/)
 {
     throw spu::tools::invalid_argument(__FILE__, __LINE__, __func__, "This method can't be called on this class.");
 }

@@ -115,7 +115,7 @@ struct Reorderer_static_core<T, N_FRAMES, 2, K>
 template<typename T, int N_FRAMES, int K>
 struct Reorderer_static_core<T, N_FRAMES, 1, K>
 {
-    static void compute(mipp::reg regs_inter[N_FRAMES]) {}
+    static void compute(mipp::reg /*regs_inter*/[N_FRAMES]) {}
 };
 
 // HACK for clang and gcc
@@ -123,7 +123,7 @@ struct Reorderer_static_core<T, N_FRAMES, 1, K>
 template<typename T, int N_FRAMES, int J>
 struct Reorderer_static_core<T, N_FRAMES, J, 16384>
 {
-    static void compute(mipp::reg regs_inter[N_FRAMES]) {}
+    static void compute(mipp::reg /*regs_inter*/[N_FRAMES]) {}
 };
 #endif
 
@@ -361,7 +361,7 @@ struct Reorderer_static_core_rev<T, N_FRAMES, 1, K, L>
 template<typename T, int N_FRAMES, int K>
 struct Reorderer_static_core_rev<T, N_FRAMES, 1, K, 0>
 {
-    static int compute(mipp::reg regs_inter[N_FRAMES]) { return K >> 1; }
+    static int compute(mipp::reg /*regs_inter*/[N_FRAMES]) { return K >> 1; }
 };
 
 template<typename T, int N_FRAMES>

@@ -79,7 +79,7 @@ void
 LC_sorter<T>::_partial_sort_step1(const T* values,
                                   std::vector<int>& pos,
                                   const int n_elmts,
-                                  const int K,
+                                  const int /*K*/,
                                   const int depth,
                                   const int max_elmts,
                                   std::vector<int>& tree_idx)

@@ -260,7 +260,7 @@ Decoder_SISO<B, R>::_decode_siso(const R* Y_N1, int8_t* CWD, R* Y_N2, const size
 
 template<typename B, typename R>
 int
-Decoder_SISO<B, R>::_decode_siso(const R* Y_N1, R* Y_N2, const size_t frame_id)
+Decoder_SISO<B, R>::_decode_siso(const R* /*Y_N1*/, R* /*Y_N2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
@@ -276,7 +276,7 @@ Decoder_SISO<B, R>::_decode_siso_alt(const R* sys, const R* par, int8_t* CWD, R*
 
 template<typename B, typename R>
 int
-Decoder_SISO<B, R>::_decode_siso_alt(const R* sys, const R* par, R* ext, const size_t frame_id)
+Decoder_SISO<B, R>::_decode_siso_alt(const R* /*sys*/, const R* /*par*/, R* /*ext*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

@@ -6,7 +6,7 @@
 using namespace aff3ct;
 using namespace aff3ct::module;
 
-Decoder_LDPC_BP ::Decoder_LDPC_BP(const int K,
+Decoder_LDPC_BP ::Decoder_LDPC_BP(const int /*K*/,
                                   const int N,
                                   const int n_ite,
                                   const tools::Sparse_matrix& _H,

@@ -899,7 +899,7 @@ Decoder_polar_SCL_MEM_fast_sys<B, R, API_polar>::flip_bits_r1(const int old_path
                                                               const int new_path,
                                                               const int dup,
                                                               const int off_s,
-                                                              const int n_elmts)
+                                                              const int /*n_elmts*/)
 {
     constexpr B b = spu::tools::bit_init<B>();
 
@@ -1332,7 +1332,7 @@ Decoder_polar_SCL_MEM_fast_sys<B, R, API_polar>::flip_bits_spc(const int old_pat
                                                                const int new_path,
                                                                const int dup,
                                                                const int off_s,
-                                                               const int n_elmts)
+                                                               const int /*n_elmts*/)
 {
     constexpr B b = spu::tools::bit_init<B>();
 
@@ -1399,7 +1399,7 @@ Decoder_polar_SCL_MEM_fast_sys<B, R, API_polar>::flip_bits_spc(const int old_pat
 template<typename B, typename R, class API_polar>
 int
 Decoder_polar_SCL_MEM_fast_sys<B, R, API_polar>::duplicate_tree(const int old_path,
-                                                                const int off_l,
+                                                                const int /*off_l*/,
                                                                 const int off_s,
                                                                 const int r_d)
 {
@@ -1446,7 +1446,7 @@ Decoder_polar_SCL_MEM_fast_sys<B, R, API_polar>::delete_path(int path_id, const 
 
 template<typename B, typename R, class API_polar>
 int
-Decoder_polar_SCL_MEM_fast_sys<B, R, API_polar>::select_best_path(const size_t frame_id)
+Decoder_polar_SCL_MEM_fast_sys<B, R, API_polar>::select_best_path(const size_t /*frame_id*/)
 {
     best_path = -1;
     for (auto i = 0; i < n_active_paths; i++)

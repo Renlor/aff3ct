@@ -12,10 +12,10 @@ Scaling_factor_constant<B, R>::Scaling_factor_constant(const int n_ite, const fl
 
 template<typename B, typename R>
 bool
-Scaling_factor_constant<B, R>::siso_n(const int ite,
-                                      const mipp::vector<R>& sys,
+Scaling_factor_constant<B, R>::siso_n(const int /*ite*/,
+                                      const mipp::vector<R>& /*sys*/,
                                       mipp::vector<R>& ext,
-                                      mipp::vector<B>& s)
+                                      mipp::vector<B>& /*s*/)
 {
     const auto loop_size = (int)ext.size();
     for (auto i = 0; i < loop_size; i++)
@@ -35,7 +35,7 @@ Scaling_factor_constant<B, R>::clone() const
 
 template<typename B, typename R>
 bool
-Scaling_factor_constant<B, R>::siso_i(const int ite, const mipp::vector<R>& sys, mipp::vector<R>& ext)
+Scaling_factor_constant<B, R>::siso_i(const int ite, const mipp::vector<R>& /*sys*/, mipp::vector<R>& ext)
 {
     if (ite < this->n_ite - 1)
     {

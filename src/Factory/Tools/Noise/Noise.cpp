@@ -126,7 +126,7 @@ Noise ::store(const cli::Argument_map_value& vals)
 }
 
 void
-Noise ::get_headers(std::map<std::string, tools::header_list>& headers, const bool full) const
+Noise ::get_headers(std::map<std::string, tools::header_list>& headers, const bool /*full*/) const
 {
     auto p = this->get_prefix();
 

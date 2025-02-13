@@ -37,7 +37,7 @@ max_star(const R a, const R b)
 
 template<typename R>
 inline R
-max_star_safe(const R a, const R b)
+max_star_safe(const R /*a*/, const R /*b*/)
 {
     throw spu::tools::runtime_error(
       __FILE__, __LINE__, __func__, "This method is not defined in fixed-point arithmetic.");
@@ -101,7 +101,7 @@ max_star_i(const mipp::Reg<R> a, const mipp::Reg<R> b)
 
 template<typename R>
 inline mipp::Reg<R>
-max_star_safe_i(const mipp::Reg<R> a, const mipp::Reg<R> b)
+max_star_safe_i(const mipp::Reg<R> /*a*/, const mipp::Reg<R> /*b*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }

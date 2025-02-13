@@ -36,7 +36,7 @@ Encoder_LDPC_from_QC<B>::clone() const
 
 template<typename B>
 void
-Encoder_LDPC_from_QC<B>::_encode(const B* U_K, B* X_N, const size_t frame_id)
+Encoder_LDPC_from_QC<B>::_encode(const B* U_K, B* X_N, const size_t /*frame_id*/)
 {
     int M = this->N - this->K;
 

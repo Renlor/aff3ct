@@ -255,21 +255,21 @@ CRC<B>::check_packed(const B* V_K, const int frame_id, const bool managed_memory
 
 template<typename B>
 void
-CRC<B>::_build(const B* U_K1, B* U_K2, const size_t frame_id)
+CRC<B>::_build(const B* /*U_K1*/, B* /*U_K2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B>
 void
-CRC<B>::_extract(const B* V_K1, B* V_K2, const size_t frame_id)
+CRC<B>::_extract(const B* /*V_K1*/, B* /*V_K2*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
 }
 
 template<typename B>
 bool
-CRC<B>::_check(const B* V_K, const size_t frame_id)
+CRC<B>::_check(const B* /*V_K*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
     return false;
@@ -277,7 +277,7 @@ CRC<B>::_check(const B* V_K, const size_t frame_id)
 
 template<typename B>
 bool
-CRC<B>::_check_packed(const B* V_K, const size_t frame_id)
+CRC<B>::_check_packed(const B* /*V_K*/, const size_t /*frame_id*/)
 {
     throw spu::tools::unimplemented_error(__FILE__, __LINE__, __func__);
     return false;

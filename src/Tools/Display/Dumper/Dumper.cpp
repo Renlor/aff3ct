@@ -229,7 +229,7 @@ Dumper ::write_header_binary(std::ofstream& file,
 }
 
 void
-Dumper ::write_body_binary(std::ofstream& file, const std::vector<std::vector<char>>& buffer, const unsigned bytes)
+Dumper ::write_body_binary(std::ofstream& file, const std::vector<std::vector<char>>& buffer, const unsigned /*bytes*/)
 {
     for (auto b : buffer)
         file.write(reinterpret_cast<char*>(b.data()), b.size());
